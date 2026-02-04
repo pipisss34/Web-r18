@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARSIP CAKMAN</title>
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/pipisss34/My-images/favicon.png">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--bg-color);
+    }
+
+    header {
+      background: url("https://cdn.jsdelivr.net/gh/pipisss34/My-images/1759533920642.jpg") center/cover no-repeat;
+      height: 230px;
+      color: white;
+      text-align: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    /* ✅ Logo Responsif */
+    .logo {
+      max-width: 200px;
+      width: 40%;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        max-width: 120px;
+        width: 60%;
+      }
+      header {
+        height: 180px;
+      }
+      .header-content h1 {
+        font-size: 24px;
+      }
+    }
+
+    .header-content h1 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .welcome-text {
+      font-size: 12px;
+      margin: 0;
+      color: #FF0000;
+      font-weight: bold;
+      text-shadow:
+        -1px -1px 0 #fff,
+         1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+         1px 1px 0 #fff;
+    }
+
+    .search-bar {
+      display: flex;
+      width: 70%;
+      max-width: 500px;
+      background: white;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      outline: none;
+    }
+
+    .search-bar button {
+      padding: 8px 12px;
+      border: none;
+      background: #1E3A8A;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Navbar */
+    nav {
+      background: #1E3A8A;
+      padding: 10px 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      position: relative;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px;
+      display: block;
+    }
+
+    nav ul li:hover > a {
+      background: #3749BB;
+      border-radius: 5px;
+    }
+
+    /* Dropdown */
+    nav ul li ul {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #1E3A8A;
+      display: none;
+      flex-direction: column;
+      min-width: 200px;
+      border-radius: 5px;
+      z-index: 10;
+    }
+
+    nav ul li:hover ul {
+      display: flex;
+    }
+
+    nav ul li ul li a {
+      font-weight: normal;
+    }
+
+    nav ul li ul li a:hover {
+      background: #3749BB;
+    }
+
+    /* Kontainer grid */
+    .container {
+      width: 90%;
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+.card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px var(--card-shadow);
+  text-align: center;
+  transition: transform 0.2s, background 0.3s;
+  margin-bottom: 15px;
+  z-index: 0;
+}
+
+/* Gradient border layer */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px; /* tebal border */
+  border-radius: 12px;
+  background: linear-gradient(45deg, #8B5CF6, #F97316, #3B82F6);
+  
+  /* Biar tengahnya bolong */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  z-index: -1;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .card h2 {
+      font-size: 1rem;
+      padding: 10px;
+      background: linear-gradient(45deg, #8B5CF6, #F97316, #3B82F6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block; 
+    }
+
+
+    .card a {
+      text-decoration: none;
+    }
+
+    
+    
+
+    .pagination {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .pagination button {
+      margin: 3px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      background: #1E3A8A;
+      color: white;
+      cursor: pointer;
+    }
+
+    .pagination button.active {
+      background: #3749BB;
+    }
+
+    .pagination span {
+      margin: 0 5px;
+      color: #555;
+    }
+
+    /* Popup */
+    #agePopup {
+      position: fixed;
+      top: 5%;
+      left: 5%;
+      width: 90%;
+      height: 90%;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
+
+    /* Discussion */
+#discussionBox {
+  background: var(--bg-content);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 8px;
+  height: 200px;
+  overflow-y: auto;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+  .running-text {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    padding: 1px 0;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  .running-text marquee {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+</style>
+<link rel="stylesheet" href="style-umum.css">
+<script src="script-umum.js"></script>
+
+
+  <!-- Cloudflare Turnstile -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+
+<body>
+<div class="theme-switch-wrapper">
+  <label class="theme-switch">
+    <input type="checkbox" id="checkbox" onchange="toggleDarkMode()">
+    <span class="slider">
+      <span class="icon-sun">☀️</span>
+      <span class="icon-moon">🌙</span>
+    </span>
+  </label>
+</div>
+
+
+  <header>
+    <div class="header-content">
+      <img class="logo" src="https://cdn.jsdelivr.net/gh/pipisss34/My-images/file_00000000d78861fbb19a1a8fbd8c3b81.png" alt="">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cari konten...">
+        <button onclick="searchContent()">Cari</button>
+      </div>
+    </div>
+  </header>
+<!-- 🔸 Running Text di Atas Navbar -->
+<div class="running-text">
+  <marquee behavior="scroll" direction="left" scrollamount="6">
+    ⚠️Saya tidak bertanggung jawab bila kalian nemu tombol cheat dan kalian berdonasi dari in game dan menagihnya ke saya.
+Saya rekomendasikan kalian bertanya dulu lewat DM untuk konsultasi. 
+Terimah kasih atas perhatiannya ⚠️
+  </marquee>
+</div>
+
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="#">Tutorial ▾</a>
+        <ul>
+          <li><a href="https://www.facebook.com/share/r/1B4FguUMmi/" target="_blank">Skip Link</a></li>
+          <li><a href="https://www.facebook.com/share/r/19iKb4CwuF/" target="_blank">Tutorial Joiplay</a></li>
+          <li><a href="https://www.facebook.com/share/p/19t5EaMWQA/" target="_blank">Tutorial File Part</a></li>
+          <li><a href="https://t.me/+8FfTdwKIWZQwMWM1" target="_blank">Join grub Telegram</a></li>
+        </ul>
+      </li>
+      <li><a href="https://www.facebook.com/share/19dtggmEp6/" target="_blank">Request</a></li>
+      <li><a href="https://t.me/+8FfTdwKIWZQwMWM1/" target="_blank">Report Link</a></li>
+      <li><a href="Support.html" target="_blank">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- Konten -->
+  <div class="container" id="contentList"></div>
+  <div class="pagination" id="pagination"></div>
+<!--all tags-->
+<link rel="stylesheet" href="tags.css">
+<!-- all tags -->
+<div id="allTags">
+  <div class="tag-title">TAGS</div>
+</div>
+  <!-- Discussion -->
+  <div style="width:90%;margin:20px auto;">
+    <h2>Discussion</h2>
+    <div id="discussionBox"></div>
+    <input type="text" id="nameInput" placeholder="Nama..." style="width:30%; padding:8px; margin-top:10px;">
+    <input type="text" id="chatInput" placeholder="Tulis komentar..." style="width:48%; padding:8px; margin-top:10px;">
+    <button onclick="addMessage()" style="padding:8px 12px;">Kirim</button>
+  </div>
+
+  <!-- Popup Awal + Captcha Cloudflare -->
+   <div id="agePopup" style="display:none;">
+    <h2 style="margin-bottom:20px;">Verifikasi Dulu Sebelum Masuk</h2>
+    <div class="cf-challenge"
+         data-sitekey="0x4AAAAAAB7C7W80oAUcacjt"
+         data-callback="onCaptchaSuccess"></div>
+    <p style="margin-top:15px; font-size:13px;">Verifikasi ini hanya memastikan kamu bukan robot.</p>
+    
+  </div>
+  <!-- ★ DAFTAR KONTEN ★ -->
+<script>
+  const konten = [
+    //
+        { title: "Happy Maid Wedding", image: "https://stok-gambar-cakman.sirv.com/HMW/RJ01456947.avif", link: "happy maid wedding.html", tags: ["rpgm", "2dcg", "loli", "big breast", "cencored", "male protagonist", "maid"]},
+    { title: "Loli Ninja Village", image: "https://stok-gambar-cakman.sirv.com/DNV/e3b0c442_y3oajpe8.avif", link: "desaninjaloli.html", tags: ["rpgm", "2dcg", "loli", "monster", "cencored", "fantasy", "rape"]},
+    { title: "Matching Aite wa Kanojo no Tomodachidatta", image: "https://stok-gambar-cakman.sirv.com/PMTTP/RJ01497744_img_main.avif", link: "pamatetepa.html", tags: ["rpgm", "2dcg", "male protagonist", "simulation", "dating", "netori"]},
+    { title: "Saimin Mesugaki shokogun", image: "https://stok-gambar-cakman.sirv.com/SHBN/Cover-RJ01203959-%E7%AC%AC46%E9%A8%8E%E5%A3%AB%E5%9B%A3-%E5%82%AC%E2%97%8B%E3%83%A1%E2%97%8B%E3%82%AC%E3%82%AD%E7%97%87%E5%80%99%E7%BE%A4.avif", link: "sindrom hipnotis bocah nakal.html", tags: ["rpgm", "2dcg", "male protagonist", "simulation", "touch/feel"]},
+    { title: "Dungeon With Girl", image: "https://stok-gambar-cakman.sirv.com/RJ40229/RJ402299_img_main.avif", link: "dwg.html", tags: ["rpgm", "2dcg", "male protagonist", "simulation", "dating"]},
+    { title: "Shinobikome! Tanetsuke Ojisan to Onsen Shoujo, Infiltrate!", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/Shinobikome-Tanetsuke-Ojisan-to-Onsen-Shoujo-RJ01361572.jpg", link: "Shinobikome.html", tags:["rpgm","2dcg", "loli","male protagonist"]},
+    { title: "Big Breasts Ninpo Chichi Shinobi", image: "https://stok-gambar-cakman.sirv.com/Januari/RJ372909_img_main.avif", link: "kunoichi demon slayer.html", tags: ["rpgm", "2dcg", "animated", "female protagonist"]},
+    { title: "Kunoichi Tsubaki", image: "https://stok-gambar-cakman.sirv.com/1620379194442.png%20(1).avif", link: "kunoichi tsubaki.html", tags: ["rpgm", "2dcg", "female protagonist"]},
+    { title: "Maid days", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/Maid-Days.webp", link: "maid days.html", tags: ["rpgm", "vn", "animated", "touch/feel", "clothes", "big breasts"]},
+    { title: "Hazumi and Pregnation", image: "https://stok-gambar-cakman.sirv.com/RE239186_img_main.jpg.avif", link: "hazumiendpreg.html", tags: ["rpgm", "2dcg", "censored", "female protagonist", "pregnancy"]},
+    { title: "Aura: Hentai Cards - Divine Edition", image: "https://stok-gambar-cakman.sirv.com/RJ01131524/Aura%20hentai/Aura_StartingScreen_LogoSteamDate.gif-ezgif.com-webp-to-avif-converter.avif", link: "Aura hentai card.html", tags: ["unity", "2dcg", "adventure", "animated", "harem", "milf", "male protagonist"]},
+    { title: "Gakkou de ichiban bakunyuu na JK to kurashite mita", image: "https://stok-gambar-cakman.sirv.com/RJ01131524/Life-with-the-JK-with-the-Hugest-Boobs-in-School-RJ01131524.avif", link: "gakkou de ichiban.html", tags: ["rpgm", "2dcg", "big ass", "big tits", "censored", "creampie", "dating sim", "male protagonist", "multiple endings", "romance"]},
+    { title: "Waifu App – 90 Days to Escape a Lonely Fate!", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/Waifu-App-90-Days-to-Escape-a-Lonely-Fate.jpg", link: "waifu app.html", tags: ["rpgm", "adventure", "big breast", "fantasy", "female protagonist", "monster girl"]},
+    { title: "Asuna Hoshizuki dan Kota Bawah Tanah Nafsu", image: "https://stok-gambar-cakman.sirv.com/RJ01153640/RJ01153640_img_main.avif", link: "Hoshizuki Asuna dan Kota Bawah Tanah Nafsu.html", tags: ["rpgm","2dcg", "ahegao", "big breast", "corruption", "creampie", "exhibitionism", "female protagonist",]
+    },
+    { title: "[VIP]Star Knightess Aura", image: "https://cdn.jsdelivr.net/gh/pipisss34/Desember/Nude-Banner4.png.avif", link: "starknightaura.html", tags: ["2dcg", "adventure", "big tits", "fantasy", "female protagonist", "ntr", "turn-based", "rpgm", "paranormal", "mind control", "corruption"]},
+    { title: "Fallen Priestess: My Sister's Demonic Bloodline", image: "https://cdn.jsdelivr.net/gh/pipisss34/Desember/RJ01234887_img_main.webp", link: "fallen priestess.html", tags: ["male protagonist", "fantasy", "corruption", "demons", "incest", "rpgm", "adventure", "brother-sister"]},
+    { title: "Igyou Byoutou Silence of the Damned", image: "https://cdn.jsdelivr.net/gh/pipisss34/Desember/RJ307581_img_main.webp", link: "keheningan orang terkutuk.html", tags: ["rpgm", "2dcg", "female protagonis", "animated", "adventure", "horror"]},
+    { title: "Igyou no Yakata House of Creepy Monsters", image: "https://cdn.jsdelivr.net/gh/pipisss34/Desember/RJ298292_img_main.webp", link: "igyou no yakata house of creepy monsters.html", tags: ["rpgm", "2dcg", "female protagonis", "animated", "horror", "violation", "escape"]},
+    { title: "Zenless Zeal Zones", link: "Zenless Zeal Zones.html", image: "https://cdn.jsdelivr.net/gh/pipisss34/Desember/7l8soF.png", tags: ["renpy", "titfuck", "3dcg", "animated", "kinetic novel", "big ass", "big tits", "exhibitionism", "voyeurism"]},
+    { title: "The Female Knight with a Lewd Mark on Her Stomach", link: "The Female Knight with a Lewd Mark on Her Stomach.html", image: "https://cdn.jsdelivr.net/gh/pipisss34/Desember/ss-1.jpg.avif", tags: ["rpgm", "2dcg", "adventure", "big tits", "bukkake", "censored", "corruption", "creampie", "exhibitionism", "fantasy", "female protagonist", "futa/trans protagonist"]},
+    { title: "supower", image: "https://cdn.jsdelivr.net/gh/pipisss34/Desember/Cover.png.avif", link: "supower.html", tags: ["renpy", "vn", "3dcg", "animated", "bdsm","big ass","big tits","creampie","dating sim","male protagonist","masturbation","milf","ntr","oral sex","vagina sex"]
+    },
+    { title: " The Incredible Steal", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/Title_main.png", link: "the incredible steal.html", tags: ["rpgm", "3dcg", "animated", "big ass", "big tits", "cheating", "corruption", "groping", "handjob", "male protagonist", "milf", "ntr", "parody", "sandbox"]},
+    { title: "KLK: Ryuko Rumble", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/wLwtc6.jpg", link: "Ryuko rumble.html", tags: ["renpy", "vn", "2dcg", "female protagonist", "lesbian", "exhibitionism", "female domination", "blackmail", "school setting", "parody"]},
+    { title: "Mesugaki-san, It's Time for Hypnosis", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/RJ394727_img_main.webp", link: "Mesugaki-san, waktunya menghipnosis.html", tags: ["rpgm","2dcg", "male protagonis", "animated", "ntr", "uc"]},
+    { title: "Seeding Committee Oshigoto", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/RJ439912_img_main.webp", link: "Seeding Committee Oshigoto.html", tags: ["rpgm", "2dcg", "male protagonis", "animated", "simulation", "pixel"]},
+    { title: "The Confinement and Rape of a Self-Assured Idol", image:"https://cdn.jsdelivr.net/gh/pipisss34/November/RJ01008436_img_main.webp", link: "The Confinement and Rape of a Self-Assured Idol.html", tags: ["2dcg", "animated", "rpgm", "simulation", "violation"]},
+    { title: "Shison Han'ei Meido Haramase Puroguramu Shoujo Meido-tachi ni Kodane o Uetsukeru made no Natsuyasumi", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/RJ01376954.jpg", link: "program hamil maid.html", tags: ["rpgm","male protagonist", "harem", "pregnancy", "maid"]},
+    { title: "Stealing My Brother's Wife The Lewd Secret of My Sister-in-Law Melted", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/RJ01433463_img_main.webp", link: "stealing my brother's wife.html", tags: ["rpgm", "netori", "incest", "big breast", "male protagonist"]},
+    { title: "Heroine darkside", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/1754409573342.png.avif", link: "heroine dark side.html", tags: ["2dcg", "male protagonist", "rpgm", "ntr"]},
+    { title: " Mikomiko Life: A Heartwarming Rural Life with a Clumsy Childhood Friend", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/Mikomiko-Life-A-heartwarming-rural-life-with-a-clumsy-childhood-friend-Banner.jpg", link:"mikomiko life.html"},
+    { title: "Kimi Shokogun ~Shihai to Ai no Kyokaisen", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/Kimi-Shokogun-Shihai-to-Ai-no-Kyokaisen.webp", link: "Kimi Shokogun ~Shihai to Ai no Kyokaisen.html"},
+    { title: "A Girl's Secret New Life", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/RJ422696_img_main.jpg", link: "A girl's secret new life.html"},
+    { title: "imouto! sekatsu", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/20251117_060719.jpg", link: "Imouto! Seikatsu.html" },
+    { title: "Dotto Anime Reikan Jiko Bukei", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/RJ256536_img_main.webp", link: "hantu bajingan"},
+    { title: "Uninhabited Island Company Trip: Women’s Survival", image:"https://cdn.jsdelivr.net/gh/pipisss34/November/RJ01465067.jpg", link: "company trip.html"},
+    { title: "Rina no Tanoshii Koukyuu Paizuri Onigokko!", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/Rina-no-Tanoshii-Koukyuu-Paizuri-Onigokko-RJ01343141.jpg", link: "Rina no Tanoshii Koukyuu Paizuri Onigokko.html"},
+    { title: "Onee-shota Mujintou Seikatsu ~ Tanshou Houkei no Harem Tengoku", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/Onee-shota-Mujintou-Seikatsu-Tanshou-Houkei-no-Harem-Tengoku-RJ01338891.jpg", link: "onee-shota Mujintou Seikatsu.html"},
+    { title: "Diacatto", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/RJ388490_img_main.webp", link: "diacatto.html"},
+    { title: "Owned by My Master", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/1754167607402.png (1).avif", link: "owned by my master.html"},
+    { title: "Bad Calling 2 Inda to Chijoku no Shou", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/Bad-Calling-2-Inda-to-Chijoku-no-Shou-RJ01373735-1.jpg", link: "bad calling.html"},
+    { title: "Transferred to another world and hypnotized by NTR! A plan to ruin the life of an S-class beautiful girl!", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/RJ01220265_img_main.jpg", link: "Transferred to another world and hypnotized by NTR.html"},
+    { title: "Namaiki JK o Cheat Note de Wakaraseru", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/RJ424502-main.png", link: "Namaiki JK o Cheat Note de Wakaraseru.html"},
+    { title: "Oniichan no koto ga daidaidaidai suki na kashikokute kawaikute robo nai imouto", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/RJ01303013-1.jpg", link: "Oniichan no koto ga daidaidaidai suki.html"},
+    { title: "Ohimesama Kyuushutsu Quest", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/Ohimesama-Kyuushutsu-Quest-RJ01353824.jpg", link: "Ohimesama Kyuushutsu Quest.html"},
+    { title: "NPC Kan Jiga wo Motta Ore ga Onna wo Kuiarasu", image: "https://cdn.jsdelivr.net/gh/pipisss34/November/NPC-Kan-Jiga-wo-Motta-Ore-ga-Onna-wo-Kuiarasu-RJ01360109.jpg", link: "NPC Kan Jiga wo Motta.html"},
+    { title: "female dog training", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/RJ01486158_img_main.jpg", link: "female dog training.html"},
+    { title: "Mei no Kateikyōshi ni Nattakara Hna Itazurasuru!", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/RJ01316246_img_main.webp", link: "mei no.html"},
+    { title: "Strongest Hero ∞ Reincarnated Girl Arigachi Mes Gachi Saga EA", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/Strongest-Hero-∞-Reincarnated-Girl-Arigachi-Mes-Gachi-Saga-EA.webp", link: "strongest hero.html"},
+    { title: "I'm Gonna Be My Buddy's Strict Mama's Partner", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/RJ01084601_img_main (1).webp", link: "IGBMBSMP.html"},
+    { title: "Colorlust Oni", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/1761548502941.png.avif", link: "colorlust oni.html", tags:["rpgm", "2dcg", "male protagonist", "horror", "monster girl","school setting"]},
+    { title: "Goddesses whim", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/oJfF3S.png", link: "goddesses whim.html"},
+    { title: "Tomei Ningen(invisible man)", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/RJ01041897_img_main.webp", link: "invisible man.html"},
+    { title: "Stray Incubus", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/cover_3.png.avif", link: "stray incubuss1s2.html"},
+    { title: "Summer memories +" , image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/RJ286688_img_main.webp", link: "summer memories.html"},
+    { title: "Zombie's Retreat 2", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/1667241781892.png.avif", link: "zombies retreat 2.html"},
+    { title: "Zombie's Retreat", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/cwOBG3.png", link: "Zombies Retreat.html"},
+    { title: "Junshin Sister no Inran Succubus Kindan Seiyaku", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/RJ01423760.jpg", link: "Junshin Sister no Inran Succubus Kindan Seiyaku.html"},
+    { title: "Nyan Hara Kainoko Shoujo to Kozukuri Seikatsu", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/Nyan-Hara-Kainoko-Shoujo-to-Kozukuri-Seikatsu-d_563585 (1).jpg ", link: "Nyan hara.html"},
+    { title: "milf plaza", image: "https://fast.image.delivery/zabnvlx.jpg", link: "milplaz.html" },
+    { title: "The Zombie Island", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/RJ174850_img_main.jpg.avif", link: "zombie island.html"},
+    { title: "Lustful Zombie's Summer Vacation", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/0c525d0453431762f42fd9811ecb39bd.jpg", link: "Lustful Zombie's Summer Vacation" },
+    { title: "Shoujo Saimin ~Yubi o Mawasu Dake no Otegaru Saimin", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/RJ01333229_img_main-1 (1).png", link: "shojou saimin.html"},
+{ title: "Myth of Slayer", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/FB_IMG_1761006300252.jpg", link: "myth of slayer.html" },
+{ title: "[VIP] Madam, Please Pay the Rent with Your Body", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/1001324302-picsay.png", link: "Please pay the rent.html" },
+{ title: "Okitsune-sama and One Shota Summer Diary W – Double Onee-san and the Secret Peephole", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/RJ01375653_img_main.jpg", link: "double onee-san.html" },
+{ title: "Haramase! Bakunyuu Tengoku Angel Bitch 2", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/d_629260.jpg", link: "Haramase BTAB2.html" },
+{ title: "love and bitch", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/1001324785-picsay.png", link: "Love&bitch.html" },
+{ title: "KUROGAMI", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/Kurogami-RJ01350865.jpg", link: "kurogami.html" },
+{ title: "JK Molester Train Seeding Uncle", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/FB_IMG_1760079216452.jpg", link: "jk train seeding.html" },
+{ title: "Sister Amelie ~Seisona Shoujo wa Otosareru", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/RJ01479917.jpg", link: "Sister Amelie.html" },
+{ title: "How to defeat Yuzuki ~ From today, I’ll call you “that” instead of “uncle”♪~~", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/How-to-defeat-Yuzuki-From-today-Ill-call-you-that-instead-of-uncle.jpg", link: "How to defeat yuzuki.html" },
+{ title: "The Girl Who Confessed to Me", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/Screenshot-2025-08-15-190142-1536x859.jpg", link: "The Girl Who Confessed to Me.html" },
+{ title: "Tsun na Imouto o Dere Otosu!! Futari de Kurasu Sanjuu Nichi Kan", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/Tsun-na-Imouto-o-Dere-Otosu-Futari-de-Kurasu-Sanjuu-Nichi-Kan-RJ01401017.jpg", link: "Tsun na Imouto.html" },
+{ title: "Mesugaki summer life", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/FB_IMG_1759914508517.jpg", link: "mesugaki summer life.html" },
+{ title: "Welcome to Seeding City", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/ss-1.jpg", link: "welcome to seeding city.html" },
+{ title: "Mafia Certificate", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/image.png", link: "mafia certificate.html" },
+{ title: "Goodbye eternity", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/209b248ba608ae21a7d1f5eee26dda33ad7fde3d5a963c613d093829141c356d_product_card_v2_mobile_slider_450.jpg", link: "goodbye eternity.html" },
+{ title: "imooka", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/imooka-1536x900.jpg", link: "imooka.html" },
+{ title: "Lilyne and Alchemist", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/IMG_20251006_150612_075.jpg", link: "lilynenalchemist.html" },
+{ title: "Tame it!", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/20250929-203404.png", link: "Tame it.html" },
+{ title: "Boku no kyonyū kanojo ga dōkyūsei no dekachin ni netorareru made", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/IMG_20251005_143613_690.jpg", link: "boku no kyonyu.html" },
+{ title: "One-shota RPG Yuuwaku no Singularity", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/Onee-shota RPG Yuuwaku no Singularity [Sister Museum] » KomdnimeKomdnime.jpg", link: "oneshota.html" },
+{ title: "Man ken komon wa Saeki Sasara o sasaetai", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/IMG_20251003_144708_715.jpg", link: "mkkwsso.html" },
+{ title: "et Atnyne -Anata to erabu haru no yukue", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/IMG_20251003_053652_451.jpg", link: "et etnyne.html" },
+{ title: "Trials of interspecies Sisters~Erotic exchange with Humans", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/Trials of interspecies Sisters~Erotic exchange with Humans [瀧壺チャンネル] » KomdnimeKomdnime.jpg", link: "Trials of interspecies Sisters~Erotic exchange with Humans.html" },
+{ title: "Halcyon days", image: "https://fast.image.delivery/tdsfffx.jpg", link: "halcyon.html" },
+{ title: "Sicae ep7", image: "https://fast.image.delivery/zhqtjkl.jpg", link: "sicae7.html" },
+{ title: "Hokage Adopted son", image: "https://fast.image.delivery/lnitcdw.jpg", link: "hokadoson.html" },
+{ title: "Daily Life of an Introverted Girl Changing into an Extrovert", image: "https://fast.image.delivery/srcytrv.jpg", link: "dloaigciae.html" },
+{ title: "Happy Summer", image: "https://fast.image.delivery/wzqnvts.jpg", link: "hapsum.html" },
+{ title: "V.I.R.T.U.E.S", image: "https://fast.image.delivery/odscnak.png", link: "virtues.html" },
+{ title: "Lovely Sex With Tsundere Girl", image: "https://fast.image.delivery/butsbla.jpg", link: "lswtg.html" },
+{ title: "The Fallen Angel Next Door", image: "https://fast.image.delivery/lejqmln.jpg", link: "tfand.html" },
+{ title: "play with izuna (blue archive)", image: "https://fast.image.delivery/bllnknr.jpg", link: "playWizuna.html" },
+{ title: "Aphrodisiac Apartment – Controlling residents through aphrodisiac residence rules", image: "https://fast.image.delivery/djmqqxa.jpg", link: "aphrodisiac apart.html" },
+{ title: "life in a new home", image: "https://fast.image.delivery/owxxjck.jpg", link: "lianh.html" },
+{ title: "concert girls eps 04", image: "https://fast.image.delivery/ytixfix.png", link: "concert girls.html" },
+{ title: "Ushi Musume Meido No Miruku Cafe", image: "https://fast.image.delivery/vozwucj.jpg", link: "ushi musume.html" },
+{ title: "Muriyari Makura Eigyou! Chiisana Karada o Urifobasarete", image: "https://fast.image.delivery/drxynqc.webp", link: "muri.html" },
+{ title: "Fragrance of Her Flower", image: "https://fast.image.delivery/fiqwkgw.jpg", link: "kaorukohana.html" },
+{ title: "Gyaru Beya!? Gakkou Moyori no Gyaru no Tamariba", image: "https://fast.image.delivery/jsemktz.jpg", link: "gyaru beya.html", tags: ["rpgm", "male protagonist", "gal", "uniform", "harem", "big breast", "tanned skin"] },
+{ title: "Village Rhapsody", image: "https://fast.image.delivery/sapngfm.jpg", link: "villager rhapsody.html", tags: ["2dcg", "male protagonist", "farm", "rpg", "milf"] },
+{ title: "NTR hunter Hisako secret", image: "https://fast.image.delivery/cnrgrfo.jpg", link: "team18.html", tags: ["2dcg", "animated", "censored", "cheating", "corruption", "creampie", "interracial", "male protagonist", "milf", "ntr", "rpgm", "voiced"] },
+{ title: "Quiz! YES or NO! Akuma no Netorare Variety Show", image: "https://fast.image.delivery/bbwrurl.jpg", link: "quizyesorno.html", tags: ["female protagonist", "clothes", "cheating", "ntr", "internal cumshot", "big breast"] },
+{ title: "Osawari Roshin Bus", image: "https://fast.image.delivery/nuytojh.jpg", link: "osawariroshinbus.html", tags: ["clothed", "touch/feel", "pixel", "simulation"] },
+{ title: "Namaiki Shoujo to Wakarase Dousei Seikatsu", image: "https://fast.image.delivery/ovhduuu.jpg", link: "namshojou.html", tags: ["2dcg", "simulation", "male protagonis", "mesugaki", "touch/feel", "daily life"] },
+{ title: "Kono ojou-sama_ muchi ni tsuki", image: "https://fast.image.delivery/gbtooay.jpg", link: "kosmnt.html", tags: ["2dcg", "male protagonis", "simulation", "touch/feel", "slice of life", "daily life"] },
+{ title: "Our Love That Failed to Bloom", image: "https://fast.image.delivery/wzvbeqk.jpg", link: "ourlove.html", tags: ["rpgm", "2dcg", "animated", "big tits", "censored", "corruption", "male protagonist", "ntr"] },
+{ title: "Futari Gurashi [ENG]", image: "https://fast.image.delivery/vdzvwhl.jpg", link: "futagura.html", tags: ["renpy", "animated", "big breast heroine", "school setting", "romance", "vn", "slice of life"] },
+{ title: "naked exposed walk at school", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/nakexpo Preview.jpg", link: "nakexpo.html", tags: ["female protagonist", "school setting", "loli", "rpgm"] },
+{ title: "My Hentai Fantasy", image: "https://fast.image.delivery/cxwqfxg.png", link: "myhenfan.html", tags: ["3dcg", "animated", "big ass", "big tits", "groping", "handjob", "incest"] },
+{ title: "Agent17", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/Agent17 Preview.jpg", link: "agent17.html", tags: ["3dcg", "vn", "animated", "male protagonist", "milf"] },
+{ title: "Heitenai RPG", image: "https://fast.image.delivery/yglsyrn.jpg", link: "heitenai.html", tags: ["rpgm","big breast", "loli", "female heroine", "monster girl", "uncen"] },
+{ title: "milfy city", image: "https://fast.image.delivery/nevjrsa.jpg", link: "milcit.html", tags: ["romance", "vn", "male protagonist", "milf"] },
+{ title: "itazura", image: "https://fast.image.delivery/elpiugr.jpg", link: "itazura.html", tags: ["2dcg", "simulation", "touch/feel", "loli","male protagonist"] },
+{ title: "Eustice to Abakareru Jiin no Mezame", image: "https://fast.image.delivery/qbdxnht.jpg", link: "eustice.html", tags: ["big breast", "fantasy", "loli", "female heroine", "rpgm"] },
+{ title: "Haramase camp", image: "https://fast.image.delivery/zjdlewp.webp", link: "Haramase.html", tags: ["rpgm","animated","big breast","bukkake","loli" ,"female heroine", "simulation", "harem", "pregnancy"] },
+{ title: "Succubus Family – Sakusei Keiyaku to Hirowareta Boku", image: "https://fast.image.delivery/mjjzhwk.jpg", link: "sucfam.html", tags: ["vn","big breast","shota","male protagonist","2dcg"] },
+{ title: "DokiDoki! Hentai Health Checkup", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/DokiDoki! Preview.jpg", link: "dokidoki.html", tags: ["animated", "big breast", "school", "simulation","touch/feel"] },
+{ title: "Ima, Kanojo wa Real Time NTR Monogatari", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/ima- kanojo Preview.jpg", link: "ima.html", tags: ["rpgm","ntr", "Pregnancy", "virgin", "female protagonist"] },
+{ title: "Nemurimouto", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/x.jpg", link: "nemurimouto.html", tags: ["animated", "big breast", "school", "touch/feel", "simulation"] },
+{ title: "Oyasumi Echi", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/oyasumi echi Preview 3.jpg", link: "oyasumi.html", tags: ["2dcg", "male protagonist", "simulation", "touch/feel", "vn", "loli", "incest"] },
+{ title: "Neet Chan + DLC", image: "https://cdn.jsdelivr.net/gh/pipisss34/My-images/neet-chan Preview 2.jpg", link: "neet.html", tags: ["rpgm","simulation","animated","loli","pregnancy","male protagonist","uncen","vn"] }
+  ];
+
+  const itemsPerPage = 10;
+  // Mengambil halaman terakhir yang dibuka dari storage, jika tidak ada default ke 1
+let currentPage = parseInt(localStorage.getItem("lastPage")) || 1;
+
+
+  /* ---------- helper: buat 1 card (pakai di renderContent & search/filter) ---------- */
+function createCardHTML(item) {
+  return `
+    <a href="${item.link}">
+      <img src="${item.image}" alt="${item.title}">
+      <h2>${item.title}</h2>
+    </a>
+    <div class="tags">
+      ${item.tags ? item.tags.map(t => `<span class="tag" onclick="filterByTag('${t}')">${t}</span>`).join("") : ""}
+    </div>
+  `;
+}
+
+/* ---------- render dengan pagination (pakai data global 'konten') ---------- */
+function renderContent(page) {
+  // Simpan halaman saat ini ke localStorage
+  localStorage.setItem("lastPage", page);
+
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const display = konten.slice(start, end);
+
+  const list = document.getElementById("contentList");
+  list.innerHTML = "";
+
+  display.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = createCardHTML(item);
+    list.appendChild(card);
+  });
+
+  renderPagination(page);
+}
+
+
+/* ---------- search yang menampilkan tags juga ---------- */
+function searchContent() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+
+  const filtered = konten.filter(item =>
+    item.title.toLowerCase().includes(query) ||
+    (item.tags && item.tags.some(t => t.toLowerCase().includes(query)))
+  );
+
+
+
+  const list = document.getElementById("contentList");
+  list.innerHTML = "";
+
+  filtered.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = createCardHTML(item);
+    list.appendChild(card);
+  });
+
+  // optional: hide pagination when searching
+
+}
+
+  function renderPagination(page) {
+    const totalPages = Math.ceil(konten.length / itemsPerPage);
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = "";
+
+    function createBtn(p) {
+      const btn = document.createElement("button");
+      btn.innerText = p;
+      btn.className = (p === page) ? "active" : "";
+      btn.onclick = () => {
+        currentPage = p;
+        renderContent(currentPage);
+      };
+      pagination.appendChild(btn);
+    }
+
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) createBtn(i);
+    } else {
+      if (page > 3) createBtn(1);
+      if (page > 4) {
+        const dots = document.createElement("span");
+        dots.innerText = "...";
+        pagination.appendChild(dots);
+      }
+
+      const start = Math.max(1, page - 1);
+      const end = Math.min(totalPages, page + 1);
+      for (let i = start; i <= end; i++) createBtn(i);
+
+      if (page < totalPages - 3) {
+        const dots = document.createElement("span");
+        dots.innerText = "...";
+        pagination.appendChild(dots);
+      }
+
+      if (page < totalPages - 2) createBtn(totalPages);
+    }
+  }
+
+  renderContent(currentPage);
+
+  // ✅ Tutup popup
+  function closePopup() {
+    document.getElementById("agePopup").style.display = "none";
+  }
+
+  // ✅ Fitur pencarian
+  function searchContent() {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const filtered = konten.filter(item => item.title.toLowerCase().includes(query));
+    const list = document.getElementById("contentList");
+    list.innerHTML = "";
+
+    filtered.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <a href="${item.link}">
+          <img src="${item.image}" alt="${item.title}">
+          <h2>${item.title}</h2>
+        </a>
+      `;
+      list.appendChild(card);
+    });
+  }
+  
+</script>
+
+<script>
+  // ✅ Cek verifikasi Cloudflare (berlaku 10 menit)
+  window.addEventListener("load", () => {
+    const lastVerified = localStorage.getItem("captcha_last_verified");
+    const now = Date.now();
+
+    if (!lastVerified || now - parseInt(lastVerified) > 600000) {
+      document.getElementById("agePopup").style.display = "flex";
+    } else {
+      document.getElementById("agePopup").style.display = "none";
+    }
+  });
+
+  // ✅ Callback dari Cloudflare Turnstile
+  function onCaptchaSuccess(token) {
+    localStorage.setItem("captcha_last_verified", Date.now().toString());
+    document.getElementById("agePopup").style.display = "none";
+  }
+</script>
+
+<!-- 🔥 Panggil file JS khusus TAG -->
+<script src="tags.js"></script>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script src="firebase.js"></script>
+
+
+
+
+<!--------adblock detector------------>
+<style>
+#dns-lock{
+  position:fixed;
+  inset:0;
+  background:#0f0f12;
+  color:#eaeaea;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999999;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+}
+#dns-lock .box{text-align:center;max-width:320px}
+#dns-lock .lock{font-size:72px;margin-bottom:16px}
+#dns-lock h2{font-size:20px;margin:0 0 8px}
+#dns-lock p{font-size:14px;opacity:.7;margin:0}
+</style>
+
+<div id="dns-lock">
+  <div class="box">
+    <div class="lock">🔒</div>
+    <h2>Akses Diblokir</h2>
+    <p>Matikan Adblock / DNS untuk melanjutkan</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  if(location.hostname==="localhost"||location.hostname==="127.0.0.1") return;
+
+  function block(){
+    document.getElementById("dns-lock").style.display="flex";
+  }
+
+  var img=new Image();
+  img.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?"+Date.now();
+  img.onerror=block;
+}
+
+  // Adblock browser
+  var bait=document.createElement("div");
+  bait.className="adsbox ad adsbanner";
+  document.body.appendChild(bait);
+
+  setTimeout(function(){
+    if(bait.offsetHeight===0) block();
+    bait.remove();
+  },100);
+
+  // DNS AdGuard / NextDNS
+  var img=new Image();
+  img.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?"+Date.now();
+  img.onerror=block;
+})();
+</script>
+<script src="script-umum.js"></script>
+</body>
+</html>
