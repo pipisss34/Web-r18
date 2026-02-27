@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inma Keiyaku Sex Succubus</title>
+  <style>
+
+/* ==== AUTO THEME VARIABLES ==== */
+:root {
+  --bg-body: #f8f9fa;
+  --bg-content: #ffffff;
+  --text-main: #000000;
+  --nav-bg: #1E3A8A;
+  --nav-hover: #3749BB;
+  --card-shadow: rgba(0,0,0,0.1);
+}
+
+.dark-mode {
+  --bg-body: #121212;
+  --bg-content: #1e1e1e;
+  --text-main: #e0e0e0;
+  --nav-bg: #0f172a;
+  --nav-hover: #1e293b;
+  --card-shadow: rgba(0,0,0,0.6);
+}
+/* ==== END AUTO THEME ==== */
+
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--bg-body);
+    }
+    header {
+      background: url("https://cdn.jsdelivr.net/gh/pipisss34/My-images/1759533920642.jpg") center/cover no-repeat;
+      height: 230px;
+      color: white;
+      text-align: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    header h1 {
+      position: relative;
+      z-index: 1;
+      padding-top: 70px;
+    }
+
+    /* Navbar */
+    nav {
+      background: var(--nav-bg);
+      padding: 10px 20px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      position: relative;
+      margin-right: 20px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px;
+      display: block;
+    }
+    nav ul li:hover > a {
+      background: var(--nav-hover);
+      border-radius: 5px;
+    }
+    nav ul li ul {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--nav-bg);
+      display: none;
+      flex-direction: column;
+      min-width: 200px;
+      border-radius: 5px;
+      z-index: 10;
+    }
+    nav ul li:hover ul {
+      display: flex;
+    }
+    nav ul li ul li a {
+      font-weight: normal;
+    }
+    nav ul li ul li a:hover {
+      background: var(--nav-hover);
+    }
+
+    /* Konten */
+    .content {
+      width: 90%;
+      margin: 20px auto;
+      background: var(--bg-content);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      margin: 15px 0;
+    }
+
+    /* Tombol download gaya tutorial */
+    .download-menu {
+      position: relative;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .download-btn {
+      background: var(--nav-bg);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .download-btn:hover {
+      background: var(--nav-hover);
+    }
+
+    .dropdown-links {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      background: var(--nav-bg);
+      border-radius: 5px;
+      min-width: 180px;
+      z-index: 5;
+      flex-direction: column;
+    }
+    .dropdown-links a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+    .dropdown-links a:hover {
+      background: var(--nav-hover);
+    }
+
+    .download-menu.active .dropdown-links {
+      display: flex;
+    }
+
+    .actions {
+      margin-top: 15px;
+    }
+    .counter {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .share-btn {
+      background: #6B21A8;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .share-btn:hover {
+  <div class="like-wrapper">
+    <button class="like-btn" id="likeBtn">&#10084 Like</button>
+    <span class="like-count" id="likeCount">0</span>
+  </div>
+      background: #8B5CF6;
+    }
+    .logo {
+  max-width: 100%;
+  height: 160px;
+  display: block;
+  margin: 0 auto;
+}
+/* Gaya untuk Note/Catatan */
+.note-box {
+  background-color: #fff3cd; /* Warna kuning muda */
+  border-left: 5px solid #ffc107; /* Garis pinggir kuning */
+  color: #856404;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 5px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.note-box i {
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+/* Versi Biru (Info) */
+.note-info {
+  background-color: #d1ecf1;
+  border-left: 5px solid #0c5460;
+  color: #0c5460;
+}
+/* Container Galeri dengan Tombol */
+.gallery-wrapper {
+  position: relative;
+  margin: 15px 0;
+}
+
+.gallery-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-container::-webkit-scrollbar { display: none; } /* Sembunyikan scrollbar */
+
+.gallery-container img {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  border-radius: 8px;
+  cursor: zoom-in; /* Cursor menandakan bisa di-zoom */
+}
+
+/* Tombol Navigasi </> */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.nav-btn.prev { left: 10px; }
+.nav-btn.next { right: 10px; }
+.nav-btn:hover { background: var(--nav-hover); }
+
+/* Modal Zoom */
+#zoomModal {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  align-items: center;
+  justify-content: center;
+}
+#zoomModal img {
+  max-width: 95%;
+  max-height: 95%;
+  border-radius: 5px;
+}
+.close-zoom {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+/* Container Indikator */
+.dots-container {
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Gaya Titik Indikator */
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #00BFFF; /* Warna mengikuti tema biru */
+  width: 20px; /* Membuat titik yang aktif sedikit lebih panjang */
+  border-radius: 5px;
+}
+
+
+
+  </style>
+  <link rel="stylesheet" href="style-umum.css">
+  <link rel="stylesheet" href="like.css">
+</head>
+<body>
+  <header>
+<img class="logo" src="https://cdn.jsdelivr.net/gh/pipisss34/My-images/file_00000000d78861fbb19a1a8fbd8c3b81.png" alt="">
+  </header>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Tutorial▾</a>
+        <ul>
+          <li><a href="https://www.facebook.com/share/r/1B4FguUMmi/" target="_blank">Skip Link</a></li>
+          <li><a href="https://www.facebook.com/share/r/19iKb4CwuF/" target="_blank">Tutorial Joiplay</a></li>
+          <li><a href="https://www.facebook.com/share/p/19t5EaMWQA/" target="_blank">Tutorial File Part</a></li>
+        </ul>
+      </li>
+      <li><a href="https://www.facebook.com/share/19dtggmEp6/" target="_blank">Request</a></li>
+      <li><a href="#">Report link&#9660;</a>
+        <ul>
+          <li><a href="https://www.facebook.com/share/r/1B4FguUMmi/" target="_blank">Dm Facebook</a></li>
+          <li><a href="https://t.me/+8FfTdwKIWZQwMWM1/" target="_blank">Chat Telegram</a></li></ul>
+      <li><a href="Support.html" target="_blank">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- Konten detail -->
+  <div class="content">
+    <h2>Inma Keiyaku Sex Succubus</h2>
+    <p>
+      <img src="https://cdn.jsdelivr.net/gh/pipisss34/Feb/RJ01013286_img_main.avif">
+      <strong>Title:</strong> 淫魔契約セックスサキュバーズ
+      ‎(Android + Indonesia)</p>
+    <p><strong>Brand:</strong> Mandarin Farm (みかん畑)
+    <p><strong>Code:</strong> RJ01013286
+    <p><strong>Release:</strong> 2023-02-03
+    <p><strong>OS:</strong> Android</p>
+    <p><strong>Voice:</strong> Japanese</p>
+    <p><strong>Version:</strong>complate</p>
+    <p><strong>Size:</strong> 490mb</p>
+    <p><strong>Languages:</strong> Indonesia by Iiomeko</p>
+    <p><strong>Genre:</strong> rpgm, 2dcg, succubus, big breasts, beautiful breasts, busty, nurse, sister, schoolgirl, housewife, dot animation, battle fuck, erotic attack, undressing animation, branching erotic scenes, multiple endings
+    </p>
+    <p>
+      <strong>Ringkasan:</strong>
+Pria membuat kontrak dengan succubus untuk seks gila-gilaan demi penuhi keinginan. RPG dengan battle erotis, animasi dot (termasuk undress & breast jiggle), banyak cabang scene H, multi-ending. Fokus interaksi dengan 14 cewek beragam, termasuk creampie & erotic attack
+
+
+<div class="note-box">
+  <span><strong>NOTE:</strong> Jika game black screen saat awal buka tunggu beberapa detik dan taptap kanan atas / kiri bawah.</span>
+</div>
+<div class="note-box note-info">
+  <span><strong>INFO:</strong> Jika link download mati, silakan lapor melalui menu "Report Link" di atas.</span>
+</div>
+
+    <p>
+      <!-- preview Screenshot -->
+  <h3>Preview</h3>
+<div class="gallery-wrapper">
+  <button class="nav-btn prev" onclick="scrollGallery(-1)">&lt;</button>
+  <div class="gallery-container" id="gallery" onscroll="updateDots()">
+  
+  
+    <img src="https://cdn.jsdelivr.net/gh/pipisss34/Feb/RJ01013286_img_main.avif" onclick="zoomImg(this)">
+    <img src="https://cdn.jsdelivr.net/gh/pipisss34/Feb/RJ01013286_img_smp10.avif" onclick="zoomImg(this)">
+    <img src="https://cdn.jsdelivr.net/gh/pipisss34/Feb/RJ01013286_img_smp11.avif" onclick="zoomImg(this)">
+<img src="https://cdn.jsdelivr.net/gh/pipisss34/Feb/RJ01013286_img_smp21.avif" onclick="zoomImg(this)">
+<img src="https://cdn.jsdelivr.net/gh/pipisss34/Feb/RJ01013286_img_smp31.avif" onclick="zoomImg(this)">
+<img src="https://cdn.jsdelivr.net/gh/pipisss34/Feb/RJ01013286_img_smp41.avif" onclick="zoomImg(this)">
+<img src="https://cdn.jsdelivr.net/gh/pipisss34/Feb/RJ01013286_img_smp51.avif" onclick="zoomImg(this)">
+<img src="https://cdn.jsdelivr.net/gh/pipisss34/Feb/RJ01013286_img_smp71.avif" onclick="zoomImg(this)">
+<img src="https://cdn.jsdelivr.net/gh/pipisss34/Feb/RJ01013286_img_smp81.avif" onclick="zoomImg(this)">
+<img src="https://cdn.jsdelivr.net/gh/pipisss34/Feb/RJ01013286_img_smp91.avif" onclick="zoomImg(this)">
+  </div>
+  
+  
+  <button class="nav-btn next" onclick="scrollGallery(1)">&gt;</button>
+</div>
+
+<div class="dots-container" id="dotsContainer">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+    <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+</div>
+
+<div id="zoomModal">
+  <span class="close-zoom" onclick="closeZoom()">&times;</span>
+  <img id="imgZoomed" src="">
+</div>
+
+
+
+
+      <!-- Tombol download gaya tutorial -->
+<p class="like-note"><strong>NOTE:</strong> Klik like jika kamu suka/download game ini.</p>
+      <div class="actions">
+        <div class="download-menu" id="downloadMenu">
+          <button class="download-btn">🚀 Download ▾</button>
+          <div class="dropdown-links">
+            <a href="https://lewatindl.rf.gd/index2.php?id=f7395e6b" target="_blank" onclick="countDownload()">Android</a>
+            <a href="https://lewatindl.rf.gd/index2.php?id=4063ccb7" target="_blank" onclick="countDownload()">Windows/joiplay</a>
+          </div>
+        </div>
+        <button class="share-btn" onclick="shareContent()">🔗 Share</button>
+  <div class="like-wrapper">
+    <button class="like-btn" id="likeBtn">&#10084 Like</button>
+    <span class="like-count" id="likeCount">0</span>
+  </div>
+      </div>
+      <p>
+       <a href="https://t.me/+8FfTdwKIWZQwMWM1" target="_blank">
+  <img
+    src="https://stok-gambar-cakman.sirv.com/Banner/1001790357-picsay.avif"
+    style="width:100%;height:auto;display:block;margin-top:12px;"
+    alt="Join Telegram">
+</a>
+      </p>
+
+      <p class="counter">
+        Total Download: <span id="downloadCount">0</span>
+      </p>
+    </div>
+
+    <script>
+      // Hitung download
+      let downloadCount = localStorage.getItem("Maid days")| 12;
+      document.getElementById("downloadCount").innerText = downloadCount;
+
+      function countDownload() {
+        downloadCount++;
+        localStorage.setItem("Inma Keiyaku Sex Succubus", downloadCount);
+        document.getElementById("downloadCount").innerText = downloadCount;
+      }
+
+      // Toggle dropdown
+      const downloadMenu = document.getElementById('downloadMenu');
+      downloadMenu.querySelector('.download-btn').addEventListener('click', () => {
+        downloadMenu.classList.toggle('active');
+      });
+
+      // Share
+      function shareContent() {
+        const title = "Inma Keiyaku Sex Succubus";
+        const url = window.location.href;
+        navigator.clipboard.writeText(`${title} - ${url}`).then(() => {
+          alert("Link berhasil disalin ke clipboard!");
+        });
+      }
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase.js"></script>
+    <!-- script popads -->
+    <script type="text/javascript" data-cfasync="false">
+      /*<![CDATA[/* */
+      (function() {
+        var c = window, p = "a18a2f86cb2e1c67606cb37065625174", a = [["siteId", 881+498*953-315+4768125], ["minBid", 0], ["popundersPerIP", "0"], ["delayBetween", 0], ["default", false], ["defaultPerDay", 0], ["topmostLayer", "auto"]], u = ["d3d3LnZpc2FyaW9tZWRpYS5jb20vYUVwenkvb0lQL3Nmb3JjZS5taW4uanM=", "ZDEzazdwcmF4MXlpMDQuY2xvdWRmcm9udC5uZXQvYWFmcmFtZS1hci5taW4uanM="], i=-1, x, d, k = function() {
+          clearTimeout(d); i++; if (u[i]&&!(1785359195000 < (new Date).getTime() && 1 < i)) {
+            x = c.document.createElement("script"); x.type = "text/javascript"; x.async=!0; var v = c.document.getElementsByTagName("script")[0]; x.src = "https://"+atob(u[i]); x.crossOrigin = "anonymous"; x.onerror = k; x.onload = function() {
+              clearTimeout(d); c[p.slice(0, 16)+p.slice(0, 16)] || k()}; d = setTimeout(k, 5E3); v.parentNode.insertBefore(x, v)}}; if (!c[p]) {
+          try {
+            Object.freeze(c[p] = a)}catch(e) {}k()}})();
+      /*]]>/* */
+    </script>
+<style>
+
+/* ==== AUTO THEME VARIABLES ==== */
+:root {
+  --bg-body: #f8f9fa;
+  --bg-content: #ffffff;
+  --text-main: #000000;
+  --nav-bg: #1E3A8A;
+  --nav-hover: #3749BB;
+  --card-shadow: rgba(0,0,0,0.1);
+}
+
+.dark-mode {
+  --bg-body: #121212;
+  --bg-content: #1e1e1e;
+  --text-main: #e0e0e0;
+  --nav-bg: #0f172a;
+  --nav-hover: #1e293b;
+  --card-shadow: rgba(0,0,0,0.6);
+}
+/* ==== END AUTO THEME ==== */
+
+
+#dns-lock{
+  position:fixed;
+  inset:0;
+  background:#0f0f12;
+  color:#eaeaea;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999999;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+}
+#dns-lock .box{text-align:center;max-width:320px}
+#dns-lock .lock{font-size:72px;margin-bottom:16px}
+#dns-lock h2{font-size:20px;margin:0 0 8px}
+#dns-lock p{font-size:14px;opacity:.7;margin:0}
+</style>
+
+<div id="dns-lock">
+  <div class="box">
+    <div class="lock">🔒</div>
+    <h2>Akses Diblokir</h2>
+    <p>Matikan Adblock / DNS untuk melanjutkan</p>
+  </div>
+</div>
+
+<script>(function(){
+  if(location.hostname==="localhost"||location.hostname==="127.0.0.1") return;
+
+  function block(){
+    document.getElementById("dns-lock").style.display="flex";
+  }
+
+  var img=new Image();
+  img.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?"+Date.now();
+  img.onerror=block;
+}
+
+
+  // Adblock browser
+  var bait=document.createElement("div");
+  bait.className="adsbox ad adsbanner";
+  document.body.appendChild(bait);
+
+  setTimeout(function(){
+    if(bait.offsetHeight===0) block();
+    bait.remove();
+  },100);
+
+  // DNS AdGuard / NextDNS
+  var img=new Image();
+  img.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?"+Date.now();
+  img.onerror=block;
+})();
+</script>
+<!---- dev mode ----->
+
+</script>
+    <script src="script-umum.js" defer></script>
+    <script>
+  // Fungsi Geser Galeri (Tombol Panah)
+function scrollGallery(direction) {
+  const container = document.getElementById('gallery');
+  const scrollAmount = container.clientWidth;
+  container.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
+
+// Fungsi Update Titik Indikator saat Scroll
+function updateDots() {
+  const container = document.getElementById('gallery');
+  const dots = document.querySelectorAll('.dot');
+  const scrollIndex = Math.round(container.scrollLeft / container.clientWidth);
+  
+  dots.forEach((dot, index) => {
+    if (index === scrollIndex) {
+      dot.classList.add('active');
+    } else {
+      dot.classList.remove('active');
+    }
+  });
+}
+
+// Fungsi Zoom Gambar
+function zoomImg(el) {
+  const modal = document.getElementById('zoomModal');
+  const modalImg = document.getElementById('imgZoomed');
+  modal.style.display = "flex";
+  modalImg.src = el.src;
+}
+
+function closeZoom() {
+  document.getElementById('zoomModal').style.display = "none";
+}
+
+// Klik di luar gambar untuk tutup zoom
+document.getElementById('zoomModal').onclick = function(e) {
+  if (e.target.id === "zoomModal") closeZoom();
+};
+
+</script>
+  <!-- Firebase core -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+    authDomain: "likeevent-9e9ff.firebaseapp.com",
+    databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "likeevent-9e9ff",
+    storageBucket: "likeevent-9e9ff.firebasestorage.app",
+    messagingSenderId: "18674215481",
+    appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+  };
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.database();
+  </script>
+  <script src="like.js"></script>
+</body>
+</html>
