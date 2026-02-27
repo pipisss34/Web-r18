@@ -625,21 +625,115 @@ document.getElementById('zoomModal').onclick = function(e) {
 
 </script>
   <!-- Firebase core -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-  <script>
-  var firebaseConfig = {
-    apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
-    authDomain: "likeevent-9e9ff.firebaseapp.com",
-    databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "likeevent-9e9ff",
-    storageBucket: "likeevent-9e9ff.firebasestorage.app",
-    messagingSenderId: "18674215481",
-    appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
-  };
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.database();
-  </script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script>
+var firebaseConfig = {
+apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+authDomain: "likeevent-9e9ff.firebaseapp.com",
+databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+projectId: "likeevent-9e9ff",
+storageBucket: "likeevent-9e9ff.firebasestorage.app",
+messagingSenderId: "18674215481",
+appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+};
+// Inisialisasi Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+var auth = firebase.auth(); // Tambahkan inisialisasi Firebase Auth
+</script>
+
+<script src="like.js"></script>
+
+<div id="loginModal" class="login-modal">
+<div class="login-box">
+<h3>Login Diperlukan</h3>
+<p>Untuk menjaga keakuratan jumlah like, setiap akun hanya dapat memberikan satu like per konten.</p>
+<p>Data login Anda aman dan tidak disimpan secara publik. Sistem hanya menggunakan ID akun untuk mencegah spam dan menjaga data tetap real.</p>
+<button id="confirmLogin" class="google-btn">
+<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+<span>Lanjut Login dengan Google</span>
+</button>
+<button id="closeModal" class="close-btn">Batal</button>
+</div>
+</div>
+
+<script>
+// Elemen DOM
+const loginBtn = document.getElementById('loginBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+const loginModal = document.getElementById('loginModal');
+const confirmLoginBtn = document.getElementById('confirmLogin');
+const closeModalBtn = document.getElementById('closeModal');
+const likeBtn = document.getElementById('likeBtn');
+
+// Tampilkan modal login saat tombol like diklik
+likeBtn.addEventListener('click', () => {
+const user = auth.currentUser;
+if (!user) {
+loginModal.style.display = 'flex';
+}
+});
+
+// Tutup modal saat tombol batal diklik
+closeModalBtn.addEventListener('click', () => {
+loginModal.style.display = 'none';
+});
+
+// Fungsi login dengan Google
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+confirmLoginBtn.addEventListener('click', () => {
+auth.signInWithPopup(googleProvider)
+.then((result) => {
+// Login berhasil
+loginModal.style.display = 'none';
+loginBtn.style.display = 'none';
+logoutBtn.style.display = 'inline-block';
+console.log('User berhasil login:', result.user.uid);
+})
+.catch((error) => {
+// Tangani error login
+console.error('Error saat login:', error.message);
+alert('Gagal login: ' + error.message);
+});
+});
+
+// Fungsi logout
+logoutBtn.addEventListener('click', () => {
+auth.signOut()
+.then(() => {
+// Logout berhasil
+loginBtn.style.display = 'inline-block';
+logoutBtn.style.display = 'none';
+console.log('User berhasil logout');
+})
+.catch((error) => {
+console.error('Error saat logout:', error.message);
+alert('Gagal logout: ' + error.message);
+});
+});
+
+// Cek status login saat halaman dimuat
+auth.onAuthStateChanged((user) => {
+if (user) {
+// User sudah login
+loginBtn.style.display = 'none';
+logoutBtn.style.display = 'inline-block';
+} else {
+// User belum login
+loginBtn.style.display = 'inline-block';
+logoutBtn.style.display = 'none';
+}
+});
+
+// Tutup modal saat klik di luar area box
+loginModal.addEventListener('click', (e) => {
+if (e.target === loginModal) {
+loginModal.style.display = 'none';
+}
+});
+</script>
   <script src="like.js"></script>
   
   <div id="loginModal" class="login-modal">
