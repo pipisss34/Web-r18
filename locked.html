@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide Mode Fast Terkunci</title>
+<style>
+
+/* ==== AUTO THEME VARIABLES ==== */
+:root {
+  --bg-body: #f8f9fa;
+  --bg-content: #ffffff;
+  --text-main: #000000;
+  --nav-bg: #1E3A8A;
+  --nav-hover: #3749BB;
+  --card-shadow: rgba(0,0,0,0.1);
+}
+
+.dark-mode {
+  --bg-body: #121212;
+  --bg-content: #1e1e1e;
+  --text-main: #e0e0e0;
+  --nav-bg: #0f172a;
+  --nav-hover: #1e293b;
+  --card-shadow: rgba(0,0,0,0.6);
+}
+/* ==== END AUTO THEME ==== */
+
+
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0f0f12;
+    color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+  }
+  .container {
+    max-width: 480px;
+    padding: 24px;
+  }
+  .lock-img {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 24px auto;
+  }
+  h1 {
+    font-size: 1.4rem;
+    color: #ff6b6b;
+    margin-bottom: 16px;
+  }
+  p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+  }
+  a {
+    color: #4da3ff;
+    text-decoration: underline;
+  }
+</style>
+  <link rel="stylesheet" href="style-umum.css">
+  <link rel="stylesheet" href="like.css">
+</head>
+<body>
+  <div class="container">
+    <img src="https://img.icons8.com/ios-filled/200/ffffff/lock--v1.png" alt="Gembok Terkunci" class="lock-img">
+    <h1>Fitur Guide Mode Fast Terkunci</h1>
+    <p>
+      Silahkan baca <a href="manual guide.html">Rules & Benefits di Manual Guide</a>  
+      atau bisa hubungi admin untuk mengetahui cara membuka fitur ini.
+    </p>
+  </div>
+  <script src="script-umum.js" defer></script>
+  <!-- Firebase core -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+    authDomain: "likeevent-9e9ff.firebaseapp.com",
+    databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "likeevent-9e9ff",
+    storageBucket: "likeevent-9e9ff.firebasestorage.app",
+    messagingSenderId: "18674215481",
+    appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+  };
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.database();
+  </script>
+  <script src="like.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script>
+var firebaseConfig = {
+apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+authDomain: "likeevent-9e9ff.firebaseapp.com",
+databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+projectId: "likeevent-9e9ff",
+storageBucket: "likeevent-9e9ff.firebasestorage.app",
+messagingSenderId: "18674215481",
+appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+};
+// Inisialisasi Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+var auth = firebase.auth(); // Inisialisasi Firebase Auth
+</script>
+
+<script src="like.js"></script>
+
+<div id="loginModal" class="login-modal">
+<div class="login-box">
+<h3>Login Diperlukan</h3>
+<p>Untuk menjaga keakuratan jumlah like, setiap akun hanya dapat memberikan satu like per konten.</p>
+<p>Data login Anda aman dan tidak disimpan secara publik. Sistem hanya menggunakan ID akun untuk mencegah spam dan menjaga data tetap real.</p>
+<button id="confirmLogin" class="google-btn">
+<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+<span>Lanjut Login dengan Google</span>
+</button>
+<button id="closeModal" class="close-btn">Batal</button>
+</div>
+</div>
+
+<script>
+// Elemen DOM
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginModal = document.getElementById("loginModal");
+const confirmLoginBtn = document.getElementById("confirmLogin");
+const closeModalBtn = document.getElementById("closeModal");
+const likeBtn = document.getElementById("likeBtn");
+
+// Tampilkan modal login saat tombol like diklik
+if (likeBtn) {
+  likeBtn.addEventListener("click", () => {
+    const user = auth.currentUser;
+    if (!user) {
+      loginModal.style.display = "flex";
+    }
+  });
+}
+
+// Tutup modal saat tombol batal diklik
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", () => {
+    loginModal.style.display = "none";
+  });
+}
+
+// Fungsi login dengan Google
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+if (confirmLoginBtn) {
+  confirmLoginBtn.addEventListener("click", () => {
+    auth.signInWithPopup(googleProvider)
+    .then((result) => {
+      loginModal.style.display = "none";
+      if (loginBtn) loginBtn.style.display = "none";
+      if (logoutBtn) logoutBtn.style.display = "inline-block";
+      console.log("User berhasil login:", result.user.uid);
+    })
+    .catch((error) => {
+      console.error("Error saat login:", error.message);
+      alert("Gagal login: " + error.message);
+    });
+  });
+}
+
+// Fungsi logout
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    auth.signOut()
+    .then(() => {
+      if (loginBtn) loginBtn.style.display = "inline-block";
+      if (logoutBtn) logoutBtn.style.display = "none";
+      console.log("User berhasil logout");
+    })
+    .catch((error) => {
+      console.error("Error saat logout:", error.message);
+      alert("Gagal logout: " + error.message);
+    });
+  });
+}
+
+// Cek status login saat halaman dimuat
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    if (loginBtn) loginBtn.style.display = "none";
+    if (logoutBtn) logoutBtn.style.display = "inline-block";
+  } else {
+    if (loginBtn) loginBtn.style.display = "inline-block";
+    if (logoutBtn) logoutBtn.style.display = "none";
+  }
+});
+
+// Tutup modal saat klik di luar area box
+if (loginModal) {
+  loginModal.addEventListener("click", (e) => {
+    if (e.target === loginModal) {
+      loginModal.style.display = "none";
+    }
+  });
+}
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script>
+var firebaseConfig = {
+  apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+  authDomain: "likeevent-9e9ff.firebaseapp.com",
+  databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "likeevent-9e9ff",
+  storageBucket: "likeevent-9e9ff.firebasestorage.app",
+  messagingSenderId: "18674215481",
+  appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+};
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+var auth = firebase.auth();
+</script>
+<script src="like.js"></script>
+
+<div id="loginModal" class="login-modal" style="display:none;">
+  <div class="login-box">
+    <h3>Login Diperlukan</h3>
+    <p>Untuk menjaga keakuratan jumlah like, setiap akun hanya dapat memberikan satu like per konten.</p>
+    <button id="confirmLogin" class="google-btn">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+      <span>Lanjut Login dengan Google</span>
+    </button>
+    <button id="closeModal" class="close-btn">Batal</button>
+  </div>
+</div>
+
+<script>
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginModal = document.getElementById("loginModal");
+const confirmLoginBtn = document.getElementById("confirmLogin");
+const closeModalBtn = document.getElementById("closeModal");
+const likeBtn = document.getElementById("likeBtn");
+
+if(likeBtn) likeBtn.addEventListener("click", () => { if(!auth.currentUser) loginModal.style.display = "flex"; });
+if(closeModalBtn) closeModalBtn.addEventListener("click", () => { loginModal.style.display = "none"; });
+
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+if(confirmLoginBtn) confirmLoginBtn.addEventListener("click", () => {
+  auth.signInWithPopup(googleProvider).then(() => {
+    loginModal.style.display = "none";
+  }).catch(err => alert("Gagal login: " + err.message));
+});
+
+if(logoutBtn) logoutBtn.addEventListener("click", () => { auth.signOut(); });
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    if(loginBtn) loginBtn.style.display = "none";
+    if(logoutBtn) logoutBtn.style.display = "inline-block";
+  } else {
+    if(loginBtn) loginBtn.style.display = "inline-block";
+    if(logoutBtn) logoutBtn.style.display = "none";
+  }
+});
+</script>
+</body>
+</html>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<style>
+  /* CSS agar modal melayang di tengah (Overlay) */
+  .login-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    display: none; align-items: center; justify-content: center; z-index: 10000;
+  }
+  .login-box {
+    background: #1e1e1e; color: #fff; padding: 25px; border-radius: 15px;
+    max-width: 340px; text-align: center; border: 1px solid #333; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  }
+  .google-btn {
+    background: #fff; color: #000; border: none; padding: 12px; width: 100%;
+    border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px;
+  }
+  .close-btn { background: transparent; color: #aaa; border: none; margin-top: 15px; cursor: pointer; font-size: 14px; }
+</style>
+
+<script>
+var firebaseConfig = {
+  apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+  authDomain: "likeevent-9e9ff.firebaseapp.com",
+  databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "likeevent-9e9ff",
+  storageBucket: "likeevent-9e9ff.firebasestorage.app",
+  messagingSenderId: "18674215481",
+  appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+};
+if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+var database = firebase.database();
+var auth = firebase.auth();
+</script>
+
+<div id="loginModal" class="login-modal">
+  <div class="login-box">
+    <h3 style="margin:0">Login Diperlukan</h3>
+    <p style="font-size:13px; opacity:0.8; margin:15px 0">Untuk menjaga keakuratan, satu akun hanya bisa memberikan satu like.</p>
+    <button id="confirmLogin" class="google-btn">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
+      <span>Lanjut Login dengan Google</span>
+    </button>
+    <button id="closeModal" class="close-btn">Batal</button>
+  </div>
+</div>
+
+<script>
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginModal = document.getElementById("loginModal");
+const likeBtn = document.getElementById("likeBtn");
+
+// Event Listeners
+if(likeBtn) likeBtn.onclick = () => { if(!auth.currentUser) loginModal.style.display = "flex"; };
+document.getElementById("closeModal").onclick = () => { loginModal.style.display = "none"; };
+
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+document.getElementById("confirmLogin").onclick = () => {
+  auth.signInWithPopup(googleProvider)
+    .then(() => { loginModal.style.display = "none"; })
+    .catch(err => alert("Error: " + err.message));
+};
+
+if(logoutBtn) logoutBtn.onclick = () => { auth.signOut(); };
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    if(lgn) lgn.style.display = "none";
+    if(logoutBtn) logoutBtn.style.display = "inline-block";
+  } else {
+    if(lgn) lgn.style.display = "inline-block";
+    if(logoutBtn) logoutBtn.style.display = "none";
+  }
+});
+</script>
+<script src="like.js"></script>
+</body>
+</html>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<style>
+  .login-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    display: none; align-items: center; justify-content: center; z-index: 10000;
+  }
+  .login-box {
+    background: #1e1e1e; color: #fff; padding: 25px; border-radius: 15px;
+    max-width: 340px; text-align: center; border: 1px solid #333;
+  }
+  .google-btn-modal {
+    background: #fff; color: #000; border: none; padding: 12px; width: 100%;
+    border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; 
+    align-items: center; justify-content: center; gap: 10px; margin-top: 15px;
+  }
+</style>
+
+<script>
+var firebaseConfig = {
+  apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+  authDomain: "likeevent-9e9ff.firebaseapp.com",
+  databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "likeevent-9e9ff",
+  storageBucket: "likeevent-9e9ff.firebasestorage.app",
+  messagingSenderId: "18674215481",
+  appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+};
+if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+var database = firebase.database();
+var auth = firebase.auth();
+</script>
+
+<div id="loginModal" class="login-modal">
+  <div class="login-box">
+    <h3>Login Diperlukan</h3>
+    <p style="font-size:13px; opacity:0.8;">Satu akun hanya bisa memberikan satu like agar data akurat.</p>
+    <button id="confirmLogin" class="google-btn-modal">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
+      <span>Lanjut Login dengan Google</span>
+    </button>
+    <button id="closeModal" style="background:none; border:none; color:#aaa; cursor:pointer; margin-top:10px;">Batal</button>
+  </div>
+</div>
+
+<script>
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginModal = document.getElementById("loginModal");
+const likeBtn = document.getElementById("likeBtn");
+
+if(likeBtn) likeBtn.onclick = () => { if(!auth.currentUser) loginModal.style.display = "flex"; };
+document.getElementById("closeModal").onclick = () => { loginModal.style.display = "none"; };
+
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+document.getElementById("confirmLogin").onclick = () => {
+  auth.signInWithPopup(googleProvider).then(() => { loginModal.style.display = "none"; });
+};
+
+if(logoutBtn) logoutBtn.onclick = () => { auth.signOut(); };
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    if(loginBtn) loginBtn.style.display = "none";
+    if(logoutBtn) logoutBtn.style.display = "inline-block";
+  } else {
+    if(loginBtn) loginBtn.style.display = "inline-block";
+    if(logoutBtn) logoutBtn.style.display = "none";
+  }
+});
+</script>
+<script src="like.js"></script>
+</body>
+</html>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<style>
+  .login-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    display: none; align-items: center; justify-content: center; z-index: 10000;
+  }
+  .login-box {
+    background: #1e1e1e; color: #fff; padding: 25px; border-radius: 15px;
+    max-width: 340px; text-align: center; border: 1px solid #333;
+  }
+  .google-btn-modal {
+    background: #fff; color: #000; border: none; padding: 12px; width: 100%;
+    border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; 
+    align-items: center; justify-content: center; gap: 10px; margin-top: 15px;
+  }
+</style>
+
+<script>
+var firebaseConfig = {
+  apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+  authDomain: "likeevent-9e9ff.firebaseapp.com",
+  databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "likeevent-9e9ff",
+  storageBucket: "likeevent-9e9ff.firebasestorage.app",
+  messagingSenderId: "18674215481",
+  appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+};
+if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+var database = firebase.database();
+var auth = firebase.auth();
+</script>
+
+<div id="loginModal" class="login-modal">
+  <div class="login-box">
+    <h3>Login Diperlukan</h3>
+    <p style="font-size:13px; opacity:0.8;">Satu akun hanya bisa memberikan satu like agar data akurat.</p>
+    <button id="confirmLogin" class="google-btn-modal">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
+      <span>Lanjut Login dengan Google</span>
+    </button>
+    <button id="closeModal" style="background:none; border:none; color:#aaa; cursor:pointer; margin-top:10px;">Batal</button>
+  </div>
+</div>
+
+<script>
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginModal = document.getElementById("loginModal");
+const likeBtn = document.getElementById("likeBtn");
+
+if(likeBtn) likeBtn.onclick = () => { if(!auth.currentUser) loginModal.style.display = "flex"; };
+document.getElementById("closeModal").onclick = () => { loginModal.style.display = "none"; };
+
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+document.getElementById("confirmLogin").onclick = () => {
+  auth.signInWithPopup(googleProvider).then(() => { loginModal.style.display = "none"; });
+};
+
+if(logoutBtn) logoutBtn.onclick = () => { auth.signOut(); };
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    if(loginBtn) loginBtn.style.display = "none";
+    if(logoutBtn) logoutBtn.style.display = "inline-block";
+  } else {
+    if(loginBtn) loginBtn.style.display = "inline-block";
+    if(logoutBtn) logoutBtn.style.display = "none";
+  }
+});
+</script>
+<script src="like.js"></script>
+</body>
+</html>

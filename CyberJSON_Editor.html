@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberJSON — Safe RPGM Translator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  ...
+  <!-- Import font LCD dari CDN -->
+  <link href="https://fonts.cdnfonts.com/css/lcd" rel="stylesheet">
+
+  <style>
+    /* Scroll percent neon blink */
+    #scroll-percent {
+  font-family: 'LCD', monospace;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: var(--accent2);
+  text-shadow:
+    0 0 4px var(--accent2),
+    0 0 10px var(--accent2);
+  animation: blinkDigit 2s steps(1,end) infinite;
+}
+
+    /* Animasi kedip ala digit jam digital */
+    @keyframes blinkDigit {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+  </style>
+
+<style>
+:root{
+  --accent:#ff2d95;
+  --accent2:#00f0ff;
+  --muted:#9aa0a6;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;padding:10px;
+  font-family:'Roboto Mono',monospace;
+  background:#05040b;color:#e6eef8;
+}
+header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:18px 22px;
+
+  background:rgba(5,4,11,0.85);
+  backdrop-filter: blur(8px);
+
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.logo .title{font-family:Orbitron;color:var(--accent);font-weight:700}
+.logo .sub{font-size:12px;color:var(--muted)}
+.actions{margin-left:auto;display:flex;gap:10px;align-items:center}
+#scroll-percent {
+  font-family: 'LCD', monospace !important;
+}
+.btn{
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  border:none;border-radius:10px;padding:8px 14px;
+  font-weight:700;cursor:pointer;color:#051220;
+}
+.container{max-width:1100px;margin:20px auto}
+.drop{
+  border:2px dashed #333;border-radius:10px;
+  padding:20px;text-align:center;color:var(--muted);
+  cursor:pointer;
+}
+.list{display:grid;grid-template-columns:1fr 280px;gap:14px;margin-top:16px}
+.panel{background:#0f0b14;border-radius:10px;padding:12px}
+.events{
+  max-height:520px;
+  overflow:auto;
+}
+.event{
+  border:1px solid #222;border-radius:8px;
+  padding:10px;margin-bottom:12px;
+  display:flex;gap:10px;
+}
+.badge{
+  min-width:60px;text-align:center;
+  font-family:Orbitron;color:var(--accent);
+}
+.event{
+  display:flex;
+  gap:10px;
+  max-width:100%;
+}
+
+/* PANEL EVENT (FIX TYPO) */
+.events{
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+/* SATU EVENT */
+.event{
+  max-width:100%;
+  overflow:hidden;
+}
+
+/* WRAPPER TEXT */
+.event > div{
+  min-width:0;
+  max-width:100%;
+}
+
+/* PREVIEW */
+.preview{
+  max-width:100%;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  white-space:normal;
+}
+
+/* TEXTAREA */
+textarea{
+  width:100%;
+  min-height:80px;
+  max-width:100%;
+  background:#06040c;
+  color:#e6eef8;
+  border:1.5px solid rgba(255,45,149,0.6);
+  box-shadow:0 0 6px rgba(255,45,149,0.45);
+  border-radius:6px;
+  padding:10px;
+  resize:vertical;
+  -webkit-appearance:none;
+  appearance:none;
+}
+textarea:focus{
+  border-color:#00f0ff;
+  box-shadow:0 0 10px rgba(0,240,255,0.7);
+}
+.preview{
+  font-size:12px;color:#bbb;
+  background:#0003;border-radius:6px;
+  padding:6px;margin-bottom:6px;
+}
+.meta{font-size:12px;color:var(--muted)}
+#scroll-indicator{
+  position:fixed;top:0;right:0;width:14px;height:100vh;
+  background:#ffffff14;z-index:9999;
+}
+#scroll-indicator .bar{
+  width:100%;height:0%;
+  background:linear-gradient(180deg,#ff2d95,#9b4dff);
+}
+@media(max-width:900px){
+  .list{grid-template-columns:1fr}
+}
+</style>
+  <link rel="stylesheet" href="style-umum.css">
+  <link rel="stylesheet" href="like.css">
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <div class="title">CyberJSON</div>
+    <div class="sub">Safe Translator — 401 / 402 / 102</div>
+  </div>
+<p class="like-note"><strong>NOTE:</strong> Klik like jika kamu suka/download game ini.</p>
+  <div class="actions">
+    <span id="scroll-percent">0%</span>
+    <button class="btn" id="saveBtn">Save</button>
+  </div>
+</header>
+
+<div class="container">
+  <div id="dropzone" class="drop">
+    Drop / pilih file JSON
+    <input type="file" id="fileInput" accept="application/json" hidden>
+  </div>
+
+  <div class="list">
+    <div class="panel">
+      <div class="meta">Event ditampilkan: <b>401 / 402 / 102</b></div>
+      <div id="events" class="events"></div>
+    </div>
+    <div class="panel">
+      <div class="meta">File:</div>
+      <div id="filename">--</div>
+      <div class="meta" style="margin-top:10px">Ringkasan:</div>
+      <div id="summary">--</div>
+    </div>
+  </div>
+</div>
+
+<div style="
+  background:#1b1b25;
+  border:0.5px solid #ff4dfd;
+  border-radius:10px;
+  padding:16px;
+  max-width:400px;
+  margin:16px auto;
+  color:#eaeaea;
+  font-family:system-ui;
+">
+  <h3 style="margin-top:0; color:#8ab4f8;">Daftar Guide</h3>
+  <ul style="list-style:none; padding-left:0;">
+    <li style="margin:4px 0;">
+      <a href="manual guide.html" style="color:#ff4ddb; text-decoration:none;">Manual guide</a>
+    </li>
+    <li style="margin:4px 0;">
+      <a href="trikguide.html" style="color:#ff4ddbff; text-decoration:none;">Trik translate</a>
+    </li>
+    <li style="margin:4px 0;">
+      <a href="locked.html" style="color:#ff4ddbff; text-decoration:none;">Fast Mode</a>
+    </li>
+  </ul>
+  <p style="font-size:0.85rem; color:#aaa; margin-top:12px;">
+    Klik judul untuk membuka tutorial lengkap.
+  </p>
+</div>
+
+
+<div id="scroll-indicator"><div class="bar"></div></div>
+
+<script>
+(() => {
+
+const WANTED = new Set([401,402,102,'401','402','102']);
+let rawJson=null;
+let targets=[];
+let originalFileName='data.json';
+
+const eventsEl=document.getElementById('events');
+const fileInput=document.getElementById('fileInput');
+const dropzone=document.getElementById('dropzone');
+const filenameEl=document.getElementById('filename');
+const summaryEl=document.getElementById('summary');
+const scrollBar=document.querySelector('#scroll-indicator .bar');
+const scrollPercent=document.getElementById('scroll-percent');
+
+function cleanText(t){
+  return t
+   // .replace(/\\c\[\d+\]/gi,'')
+   // .replace(/[{}]/g,'')
+   // .replace(/\\\\/g,'\\')
+   // .replace(/\\[A-Za-z]+\[\d*\]/g,'')
+   // .replace(/[()]/g,'')
+   // .replace(/(\\\.)+/g,'')
+    .trim();
+}
+
+function walk(json){
+  if(Array.isArray(json)){
+    json.forEach(walk);
+  }else if(json && typeof json==='object'){
+    if(WANTED.has(json.code) && json.parameters){
+      if(json.code==102 && Array.isArray(json.parameters[0])){
+        json.parameters[0].forEach((c,i)=>{
+          targets.push({obj:json,idx:i,code:102});
+        });
+      }
+      if((json.code==401||json.code==402) && typeof json.parameters[0]==='string'){
+        targets.push({obj:json,idx:0,code:json.code});
+      }
+    }
+    Object.values(json).forEach(walk);
+  }
+}
+
+function render(){
+  eventsEl.innerHTML='';
+  targets.forEach((t,i)=>{
+    let text='';
+    if(t.code==102){
+      text=t.obj.parameters[0][t.idx];
+    }else{
+      text=t.obj.parameters[0];
+    }
+    const div=document.createElement('div');
+    div.className='event';
+    div.innerHTML=`
+      <div class="badge">${t.code}</div>
+      <div style="flex:1">
+        <div class="preview">${text}</div>
+        <textarea data-i="${i}">${cleanText(text)}</textarea>
+      </div>`;
+    eventsEl.appendChild(div);
+  });
+  summaryEl.textContent=targets.length+' item';
+  updateScroll();
+}
+
+eventsEl.addEventListener('input',e=>{
+  if(e.target.tagName!=='TEXTAREA')return;
+  const t=targets[e.target.dataset.i];
+  if(t.code==102){
+    t.obj.parameters[0][t.idx]=e.target.value;
+  }else{
+    t.obj.parameters[0]=e.target.value;
+  }
+});
+
+function updateScroll(){
+  const h=eventsEl.scrollHeight-eventsEl.clientHeight;
+  const p=h?eventsEl.scrollTop/h*100:0;
+  scrollBar.style.height=p+'%';
+  scrollPercent.textContent=Math.round(p)+'%';
+}
+eventsEl.addEventListener('scroll',updateScroll);
+
+dropzone.onclick=()=>fileInput.click();
+fileInput.onchange=e=>{
+  const f=e.target.files[0];
+  if(!f)return;
+  originalFileName=f.name;        // FIX NAMA FILE
+  const r=new FileReader();
+  r.onload=()=>{
+    rawJson=JSON.parse(r.result);
+    targets=[];
+    filenameEl.textContent=f.name;
+    walk(rawJson);
+    render();
+  };
+  r.readAsText(f);
+};
+
+  // download/save
+  document.getElementById('saveBtn').onclick = ()=>{
+  if(!rawJson){
+    alert('Belum ada file');
+    return;
+  }
+
+  const blob = new Blob(
+    [JSON.stringify(rawJson, null, 2)],
+    { type: 'application/json' }
+  );
+
+  const name =
+    (originalFileName.replace(/\.json$/i,'') || 'data')
+    + '-id.json';
+
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = name;
+
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(()=>{
+    URL.revokeObjectURL(link.href);
+  }, 5000);
+};
+ 
+
+})();
+
+</script>
+
+  <script src="script-umum.js" defer></script>
+  <!-- Firebase core -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+    authDomain: "likeevent-9e9ff.firebaseapp.com",
+    databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "likeevent-9e9ff",
+    storageBucket: "likeevent-9e9ff.firebasestorage.app",
+    messagingSenderId: "18674215481",
+    appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+  };
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.database();
+  </script>
+  <script src="like.js"></script>
+</body>
+</html>

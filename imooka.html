@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>imooka</title>
+  <style>
+
+/* ==== AUTO THEME VARIABLES ==== */
+:root {
+  --bg-body: #f8f9fa;
+  --bg-content: #ffffff;
+  --text-main: #000000;
+  --nav-bg: #1E3A8A;
+  --nav-hover: #3749BB;
+  --card-shadow: rgba(0,0,0,0.1);
+}
+
+.dark-mode {
+  --bg-body: #121212;
+  --bg-content: #1e1e1e;
+  --text-main: #e0e0e0;
+  --nav-bg: #0f172a;
+  --nav-hover: #1e293b;
+  --card-shadow: rgba(0,0,0,0.6);
+}
+/* ==== END AUTO THEME ==== */
+
+
+    body { font-family: Arial, sans-serif; margin: 0; background: var(--bg-body); }
+    header {
+      background: url("https://cdn.jsdelivr.net/gh/pipisss34/My-images/1759533920642.jpg") center/cover no-repeat;
+      height: 150px; color: white; text-align: center; position: relative;
+    }
+    header::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.4); }
+    header h1 { position:relative; z-index:1; padding-top:70px; }
+
+    /* Navbar */
+    nav { background: var(--nav-bg); padding: 10px 20px; }
+    nav ul { list-style: none; display: flex; align-items: center; margin: 0; padding: 0; flex-wrap: wrap; }
+    nav ul li { position: relative; margin-right: 20px; }
+    nav ul li a { color: white; text-decoration: none; font-weight: bold; padding: 8px; display: block; }
+    nav ul li:hover > a { background: var(--nav-hover); border-radius: 5px; }
+    nav ul li ul { position: absolute; top: 100%; left: 0; background: var(--nav-bg); display: none; flex-direction: column; min-width: 200px; border-radius: 5px; z-index: 10; }
+    nav ul li:hover ul { display: flex; }
+    nav ul li ul li a { font-weight: normal; }
+    nav ul li ul li a:hover { background: var(--nav-hover); }
+
+    /* Konten */
+    .content {
+      width: 90%; margin: 20px auto;
+      background: var(--bg-content); padding: 20px;
+      border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .content img {
+      max-width: 100%; height: auto;
+      border-radius: 8px; display: block; margin: 15px 0;
+    }
+
+    /* Tombol download gaya tutorial */
+    .download-menu {
+      position: relative;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .download-btn {
+      background: var(--nav-bg);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .download-btn:hover { background: var(--nav-hover); }
+
+    .dropdown-links {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      background: var(--nav-bg);
+      border-radius: 5px;
+      min-width: 180px;
+      z-index: 5;
+      flex-direction: column;
+    }
+    .dropdown-links a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+    .dropdown-links a:hover { background: var(--nav-hover); }
+
+    .download-menu.active .dropdown-links { display: flex; }
+
+    .actions { margin-top: 15px; }
+    .counter { margin-top: 10px; font-weight: bold; }
+    .share-btn {
+  <div class="like-wrapper">
+    <button class="like-btn" id="likeBtn">&#10084 Like</button>
+    <span class="like-count" id="likeCount">0</span>
+  </div>
+      background: #6B21A8;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .share-btn:hover { background: #8B5CF6; }
+  <div class="like-wrapper">
+    <button class="like-btn" id="likeBtn">&#10084 Like</button>
+    <span class="like-count" id="likeCount">0</span>
+  </div>
+  </style>
+  <link rel="stylesheet" href="style-umum.css">
+  <link rel="stylesheet" href="like.css">
+</head>
+<body>
+  <header>
+    <h1>ARSIP CAKMAN</h1>
+  </header>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Tutorial▾</a>
+        <ul>
+          <li><a href="https://www.facebook.com/share/r/1B4FguUMmi/" target="_blank">Skip Link</a></li>
+          <li><a href="https://www.facebook.com/share/r/19iKb4CwuF/" target="_blank">Tutorial Joiplay</a></li>
+          <li><a href="https://www.facebook.com/share/p/19t5EaMWQA/" target="_blank">Tutorial File Part</a></li>
+        </ul>
+      </li>
+      <li><a href="https://www.facebook.com/share/19dtggmEp6/" target="_blank">Request</a></li>
+      <li><a href="https://www.facebook.com/share/19dtggmEp6/" target="_blank">Report Link</a></li>
+      <li><a href="https://saweria.co/Cakman12" target="_blank">Support</a></li>
+    </ul>
+  </nav>    
+
+     <!-- Konten detail -->
+  <div class="content">
+    <h2>Imooka</h2>
+    <p><strong>Title:</strong> いもおか, いもおか 〜母性ロリ近親相姦ハーレムADV
+    ‎(Android + Indonesia)</p>
+    <p><strong>Brand:</strong> saihate studio</p>
+    <p><strong>Release:</strong> ?</p>
+    <p><strong>OS:</strong> Android</p>
+    <p><strong>Voice:</strong> japanese</p>
+    <p><strong>Version:</strong> v1.0.0</p>
+    <p><strong>Size:</strong> 1,6gb</p>
+    <p><strong>Languages:</strong> Indonesia</p>
+    <p><strong>Genre:</strong> incest, loli, motherly, male Protagonist, VN, Harem, Breastfeeding.</p>
+    <p><strong>Ringkasan:</strong>
+    Imooka adalah game erotis bertema ibu, loli, dan harem. Sebuah harem yang menyegarkan di mana kamu akan dimanjakan sepenuhnya oleh tiga saudari loli sungguhan dan seorang ibu loli sungguhan menantimu (GWS)
+‎</p>
+    <p>
+        <!-- preview Screenshot -->
+    <h3>Preview</h3>
+    <img src="https://cdn.jsdelivr.net/gh/pipisss34/My-images/1.jpg" alt="imooka  Preview">
+    <img src="https://cdn.jsdelivr.net/gh/pipisss34/My-images/2.jpg" alt="imooka Preview">
+    <img src="https://cdn.jsdelivr.net/gh/pipisss34/My-images/4.jpg" alt="imooka Preview">
+
+    <!-- Tombol download gaya tutorial -->
+<p class="like-note"><strong>NOTE:</strong> Klik like jika kamu suka/download game ini.</p>
+    <div class="actions">
+      <div class="download-menu" id="downloadMenu">
+        <button class="download-btn">⬇️ Download ▾</button>
+        <div class="dropdown-links">
+          <a href="http://lynk.id/pimannns.id/mr8ndryx6gxe/checkout" target="_blank" onclick="countDownload()">VIP</a>
+          <a href="https://bicolink.com/3h5f7kfl" target="_blank" onclick="countDownload()">Bicolink</a>
+          <a href="https://gpaylink.com/TK0aib6y" target="_blank" onclick="countDownload()">gpaylink</a>
+           <a href="https://exe.io/l0l2s5mM" target="_blank" onclick="countDownload()">exe.io</a>
+        </div>
+      </div>
+      <button class="share-btn" onclick="shareContent()">🔗 Share</button>
+  <div class="like-wrapper">
+    <button class="like-btn" id="likeBtn">&#10084 Like</button>
+    <span class="like-count" id="likeCount">0</span>
+  </div>
+<div style="width:100%; display:flex; justify-content:center; margin-top:10px;"><button id="loginBtn" style="background:#fff; color:#000; border:1px solid #ddd; padding:8px 15px; border-radius:5px; cursor:pointer; font-weight:bold; display:flex; align-items:center; gap:8px;"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="16">Login dengan Google</button><button id="logoutBtn" style="display:none; background:#444; color:#fff; border:none; padding:8px 15px; border-radius:5px; cursor:pointer;">Logout</button></div>
+    </div>
+    <p>
+        <img src="https://cdn.jsdelivr.net/gh/pipisss34/My-images/1001269655-picsay.jpg",>
+    </p>
+
+    <p class="counter">Total Download: <span id="downloadCount">0</span></p>
+  </div>
+
+  <script>
+    // Hitung download
+    let downloadCount = localStorage.getItem("imooka")| 12;
+    document.getElementById("downloadCount").innerText = downloadCount;
+
+    function countDownload() {
+      downloadCount++;
+      localStorage.setItem("imooka", downloadCount);
+      document.getElementById("downloadCount").innerText = downloadCount;
+    }
+
+    // Toggle dropdown
+    const downloadMenu = document.getElementById('downloadMenu');
+    downloadMenu.querySelector('.download-btn').addEventListener('click', () => {
+      downloadMenu.classList.toggle('active');
+    });
+
+    // Share
+    function shareContent() {
+      const title = "imooka";
+      const url = window.location.href;
+      navigator.clipboard.writeText(`${title} - ${url}`).then(() => {
+        alert("Link berhasil disalin ke clipboard!");
+      });
+    }
+  </script>
+  <script type="text/javascript" data-cfasync="false">
+/*<![CDATA[/* */
+(function(){var e=window,p="a18a2f86cb2e1c67606cb37065625174",z=[["siteId",258-102-653+5243782],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],j=["d3d3LnZpc2FyaW9tZWRpYS5jb20vQ2NMVmMvZHdVL3Nmb3JjZS5taW4uanM=","ZDEzazdwcmF4MXlpMDQuY2xvdWRmcm9udC5uZXQvYmFmcmFtZS1hci5taW4uanM="],r=-1,t,y,b=function(){clearTimeout(y);r++;if(j[r]&&!(1785571328000<(new Date).getTime()&&1<r)){t=e.document.createElement("script");t.type="text/javascript";t.async=!0;var g=e.document.getElementsByTagName("script")[0];t.src="https://"+atob(j[r]);t.crossOrigin="anonymous";t.onerror=b;t.onload=function(){clearTimeout(y);e[p.slice(0,16)+p.slice(0,16)]||b()};y=setTimeout(b,5E3);g.parentNode.insertBefore(t,g)}};if(!e[p]){try{Object.freeze(e[p]=z)}catch(e){}b()}})();
+/*]]>/* */
+</script>
+  <script src="script-umum.js" defer></script>
+  <!-- Firebase core -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+    authDomain: "likeevent-9e9ff.firebaseapp.com",
+    databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "likeevent-9e9ff",
+    storageBucket: "likeevent-9e9ff.firebasestorage.app",
+    messagingSenderId: "18674215481",
+    appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+  };
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.database();
+  </script>
+  <script src="like.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script>
+var firebaseConfig = {
+apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+authDomain: "likeevent-9e9ff.firebaseapp.com",
+databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+projectId: "likeevent-9e9ff",
+storageBucket: "likeevent-9e9ff.firebasestorage.app",
+messagingSenderId: "18674215481",
+appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+};
+// Inisialisasi Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+var auth = firebase.auth(); // Inisialisasi Firebase Auth
+</script>
+
+<script src="like.js"></script>
+
+<div id="loginModal" class="login-modal">
+<div class="login-box">
+<h3>Login Diperlukan</h3>
+<p>Untuk menjaga keakuratan jumlah like, setiap akun hanya dapat memberikan satu like per konten.</p>
+<p>Data login Anda aman dan tidak disimpan secara publik. Sistem hanya menggunakan ID akun untuk mencegah spam dan menjaga data tetap real.</p>
+<button id="confirmLogin" class="google-btn">
+<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+<span>Lanjut Login dengan Google</span>
+</button>
+<button id="closeModal" class="close-btn">Batal</button>
+</div>
+<div style="width:100%; display:flex; justify-content:center; margin-top:10px;"><button id="loginBtn" style="background:#fff; color:#000; border:1px solid #ddd; padding:8px 15px; border-radius:5px; cursor:pointer; font-weight:bold; display:flex; align-items:center; gap:8px;"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="16">Login dengan Google</button><button id="logoutBtn" style="display:none; background:#444; color:#fff; border:none; padding:8px 15px; border-radius:5px; cursor:pointer;">Logout</button></div>
+</div>
+
+<script>
+// Elemen DOM
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginModal = document.getElementById("loginModal");
+const confirmLoginBtn = document.getElementById("confirmLogin");
+const closeModalBtn = document.getElementById("closeModal");
+const likeBtn = document.getElementById("likeBtn");
+
+// Tampilkan modal login saat tombol like diklik
+if (likeBtn) {
+  likeBtn.addEventListener("click", () => {
+    const user = auth.currentUser;
+    if (!user) {
+      loginModal.style.display = "flex";
+    }
+  });
+}
+
+// Tutup modal saat tombol batal diklik
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", () => {
+    loginModal.style.display = "none";
+  });
+}
+
+// Fungsi login dengan Google
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+if (confirmLoginBtn) {
+  confirmLoginBtn.addEventListener("click", () => {
+    auth.signInWithPopup(googleProvider)
+    .then((result) => {
+      loginModal.style.display = "none";
+      if (loginBtn) loginBtn.style.display = "none";
+      if (logoutBtn) logoutBtn.style.display = "inline-block";
+      console.log("User berhasil login:", result.user.uid);
+    })
+    .catch((error) => {
+      console.error("Error saat login:", error.message);
+      alert("Gagal login: " + error.message);
+    });
+  });
+}
+
+// Fungsi logout
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    auth.signOut()
+    .then(() => {
+      if (loginBtn) loginBtn.style.display = "inline-block";
+      if (logoutBtn) logoutBtn.style.display = "none";
+      console.log("User berhasil logout");
+    })
+    .catch((error) => {
+      console.error("Error saat logout:", error.message);
+      alert("Gagal logout: " + error.message);
+    });
+  });
+}
+
+// Cek status login saat halaman dimuat
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    if (loginBtn) loginBtn.style.display = "none";
+    if (logoutBtn) logoutBtn.style.display = "inline-block";
+  } else {
+    if (loginBtn) loginBtn.style.display = "inline-block";
+    if (logoutBtn) logoutBtn.style.display = "none";
+  }
+});
+
+// Tutup modal saat klik di luar area box
+if (loginModal) {
+  loginModal.addEventListener("click", (e) => {
+    if (e.target === loginModal) {
+      loginModal.style.display = "none";
+    }
+  });
+}
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script>
+var firebaseConfig = {
+  apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+  authDomain: "likeevent-9e9ff.firebaseapp.com",
+  databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "likeevent-9e9ff",
+  storageBucket: "likeevent-9e9ff.firebasestorage.app",
+  messagingSenderId: "18674215481",
+  appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+};
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+var auth = firebase.auth();
+</script>
+<script src="like.js"></script>
+
+<div id="loginModal" class="login-modal" style="display:none;">
+  <div class="login-box">
+    <h3>Login Diperlukan</h3>
+    <p>Untuk menjaga keakuratan jumlah like, setiap akun hanya dapat memberikan satu like per konten.</p>
+    <button id="confirmLogin" class="google-btn">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+      <span>Lanjut Login dengan Google</span>
+    </button>
+    <button id="closeModal" class="close-btn">Batal</button>
+  </div>
+</div>
+
+<script>
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginModal = document.getElementById("loginModal");
+const confirmLoginBtn = document.getElementById("confirmLogin");
+const closeModalBtn = document.getElementById("closeModal");
+const likeBtn = document.getElementById("likeBtn");
+
+if(likeBtn) likeBtn.addEventListener("click", () => { if(!auth.currentUser) loginModal.style.display = "flex"; });
+if(closeModalBtn) closeModalBtn.addEventListener("click", () => { loginModal.style.display = "none"; });
+
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+if(confirmLoginBtn) confirmLoginBtn.addEventListener("click", () => {
+  auth.signInWithPopup(googleProvider).then(() => {
+    loginModal.style.display = "none";
+  }).catch(err => alert("Gagal login: " + err.message));
+});
+
+if(logoutBtn) logoutBtn.addEventListener("click", () => { auth.signOut(); });
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    if(loginBtn) loginBtn.style.display = "none";
+    if(logoutBtn) logoutBtn.style.display = "inline-block";
+  } else {
+    if(loginBtn) loginBtn.style.display = "inline-block";
+    if(logoutBtn) logoutBtn.style.display = "none";
+  }
+});
+</script>
+</body>
+</html>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<style>
+  /* CSS agar modal melayang di tengah (Overlay) */
+  .login-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    display: none; align-items: center; justify-content: center; z-index: 10000;
+  }
+  .login-box {
+    background: #1e1e1e; color: #fff; padding: 25px; border-radius: 15px;
+    max-width: 340px; text-align: center; border: 1px solid #333; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  }
+  .google-btn {
+    background: #fff; color: #000; border: none; padding: 12px; width: 100%;
+    border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px;
+  }
+  .close-btn { background: transparent; color: #aaa; border: none; margin-top: 15px; cursor: pointer; font-size: 14px; }
+</style>
+
+<script>
+var firebaseConfig = {
+  apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+  authDomain: "likeevent-9e9ff.firebaseapp.com",
+  databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "likeevent-9e9ff",
+  storageBucket: "likeevent-9e9ff.firebasestorage.app",
+  messagingSenderId: "18674215481",
+  appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+};
+if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+var database = firebase.database();
+var auth = firebase.auth();
+</script>
+
+<div id="loginModal" class="login-modal">
+  <div class="login-box">
+    <h3 style="margin:0">Login Diperlukan</h3>
+    <p style="font-size:13px; opacity:0.8; margin:15px 0">Untuk menjaga keakuratan, satu akun hanya bisa memberikan satu like.</p>
+    <button id="confirmLogin" class="google-btn">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
+      <span>Lanjut Login dengan Google</span>
+    </button>
+    <button id="closeModal" class="close-btn">Batal</button>
+  </div>
+</div>
+
+<script>
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginModal = document.getElementById("loginModal");
+const likeBtn = document.getElementById("likeBtn");
+
+// Event Listeners
+if(likeBtn) likeBtn.onclick = () => { if(!auth.currentUser) loginModal.style.display = "flex"; };
+document.getElementById("closeModal").onclick = () => { loginModal.style.display = "none"; };
+
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+document.getElementById("confirmLogin").onclick = () => {
+  auth.signInWithPopup(googleProvider)
+    .then(() => { loginModal.style.display = "none"; })
+    .catch(err => alert("Error: " + err.message));
+};
+
+if(logoutBtn) logoutBtn.onclick = () => { auth.signOut(); };
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    if(lgn) lgn.style.display = "none";
+    if(logoutBtn) logoutBtn.style.display = "inline-block";
+  } else {
+    if(lgn) lgn.style.display = "inline-block";
+    if(logoutBtn) logoutBtn.style.display = "none";
+  }
+});
+</script>
+<script src="like.js"></script>
+</body>
+</html>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<style>
+  .login-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    display: none; align-items: center; justify-content: center; z-index: 10000;
+  }
+  .login-box {
+    background: #1e1e1e; color: #fff; padding: 25px; border-radius: 15px;
+    max-width: 340px; text-align: center; border: 1px solid #333;
+  }
+  .google-btn-modal {
+    background: #fff; color: #000; border: none; padding: 12px; width: 100%;
+    border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; 
+    align-items: center; justify-content: center; gap: 10px; margin-top: 15px;
+  }
+</style>
+
+<script>
+var firebaseConfig = {
+  apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+  authDomain: "likeevent-9e9ff.firebaseapp.com",
+  databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "likeevent-9e9ff",
+  storageBucket: "likeevent-9e9ff.firebasestorage.app",
+  messagingSenderId: "18674215481",
+  appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+};
+if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+var database = firebase.database();
+var auth = firebase.auth();
+</script>
+
+<div id="loginModal" class="login-modal">
+  <div class="login-box">
+    <h3>Login Diperlukan</h3>
+    <p style="font-size:13px; opacity:0.8;">Satu akun hanya bisa memberikan satu like agar data akurat.</p>
+    <button id="confirmLogin" class="google-btn-modal">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
+      <span>Lanjut Login dengan Google</span>
+    </button>
+    <button id="closeModal" style="background:none; border:none; color:#aaa; cursor:pointer; margin-top:10px;">Batal</button>
+  </div>
+</div>
+
+<script>
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginModal = document.getElementById("loginModal");
+const likeBtn = document.getElementById("likeBtn");
+
+if(likeBtn) likeBtn.onclick = () => { if(!auth.currentUser) loginModal.style.display = "flex"; };
+document.getElementById("closeModal").onclick = () => { loginModal.style.display = "none"; };
+
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+document.getElementById("confirmLogin").onclick = () => {
+  auth.signInWithPopup(googleProvider).then(() => { loginModal.style.display = "none"; });
+};
+
+if(logoutBtn) logoutBtn.onclick = () => { auth.signOut(); };
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    if(loginBtn) loginBtn.style.display = "none";
+    if(logoutBtn) logoutBtn.style.display = "inline-block";
+  } else {
+    if(loginBtn) loginBtn.style.display = "inline-block";
+    if(logoutBtn) logoutBtn.style.display = "none";
+  }
+});
+</script>
+<script src="like.js"></script>
+</body>
+</html>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<style>
+  .login-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    display: none; align-items: center; justify-content: center; z-index: 10000;
+  }
+  .login-box {
+    background: #1e1e1e; color: #fff; padding: 25px; border-radius: 15px;
+    max-width: 340px; text-align: center; border: 1px solid #333;
+  }
+  .google-btn-modal {
+    background: #fff; color: #000; border: none; padding: 12px; width: 100%;
+    border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; 
+    align-items: center; justify-content: center; gap: 10px; margin-top: 15px;
+  }
+</style>
+
+<script>
+var firebaseConfig = {
+  apiKey: "AIzaSyDI8c_lwobIcMD2b5bluFMSp_Ep_xZ2p2M",
+  authDomain: "likeevent-9e9ff.firebaseapp.com",
+  databaseURL: "https://likeevent-9e9ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "likeevent-9e9ff",
+  storageBucket: "likeevent-9e9ff.firebasestorage.app",
+  messagingSenderId: "18674215481",
+  appId: "1:18674215481:web:d4ee094ef7236209ce3be8"
+};
+if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+var database = firebase.database();
+var auth = firebase.auth();
+</script>
+
+<div id="loginModal" class="login-modal">
+  <div class="login-box">
+    <h3>Login Diperlukan</h3>
+    <p style="font-size:13px; opacity:0.8;">Satu akun hanya bisa memberikan satu like agar data akurat.</p>
+    <button id="confirmLogin" class="google-btn-modal">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
+      <span>Lanjut Login dengan Google</span>
+    </button>
+    <button id="closeModal" style="background:none; border:none; color:#aaa; cursor:pointer; margin-top:10px;">Batal</button>
+  </div>
+</div>
+
+<script>
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginModal = document.getElementById("loginModal");
+const likeBtn = document.getElementById("likeBtn");
+
+if(likeBtn) likeBtn.onclick = () => { if(!auth.currentUser) loginModal.style.display = "flex"; };
+document.getElementById("closeModal").onclick = () => { loginModal.style.display = "none"; };
+
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+document.getElementById("confirmLogin").onclick = () => {
+  auth.signInWithPopup(googleProvider).then(() => { loginModal.style.display = "none"; });
+};
+
+if(logoutBtn) logoutBtn.onclick = () => { auth.signOut(); };
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    if(loginBtn) loginBtn.style.display = "none";
+    if(logoutBtn) logoutBtn.style.display = "inline-block";
+  } else {
+    if(loginBtn) loginBtn.style.display = "inline-block";
+    if(logoutBtn) logoutBtn.style.display = "none";
+  }
+});
+</script>
+<script src="like.js"></script>
+</body>
+</html>
